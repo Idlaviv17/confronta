@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import FileUploadSua from './components/FileUploadSua'
+import FileUploadEmiMensual from './components/FileUploadEmiMensual'
 
-function App() {
+const App = () => {
+  const refreshPage = () => {
+    window.location.reload()
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className='d-flex justify-content-center flex-column'>
+        <h1 className='text-center'>Sua</h1>
+        <FileUploadSua />
+      </div>
+
+      <div
+        className='d-flex justify-content-center flex-column'
+        style={{ marginTop: 25 }}
+      >
+        <h1 className='text-center'>Emisión</h1>
+        <FileUploadEmiMensual />
+      </div>
+
+      <form
+        className='d-flex justify-content-center flex-column'
+        onSubmit={refreshPage}
+      >
+        <input
+          type='submit'
+          value='Subir otros datos 🚀'
+          className='btn btn-primary btn-block mt-4'
+          style={{ width: 200, marginLeft: '44.5%' }}
+        />
+      </form>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
+
