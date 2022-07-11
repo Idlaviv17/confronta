@@ -125,7 +125,6 @@ const FileUploadEmiMensual = () => {
           style={{ width: 200, marginLeft: '44.5%' }}
           id='customFile'
           onChange={onChange}
-          enctype='multipart/form-data'
         />
 
         <input

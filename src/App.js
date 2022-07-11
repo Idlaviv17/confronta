@@ -1,13 +1,12 @@
-import SideBar from './components/SideBar.js'
+import Layout from "./components/Layout"
+import Routes from "./Routes"
 
 const App = () => {
-
   return (
-    <div className="flex">
-      <SideBar />
-    </div>
+    <Layout>
+      <Routes />
+    </Layout>
   )
 }
 
 export default App
-

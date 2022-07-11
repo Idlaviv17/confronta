@@ -1,7 +1,9 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { AccessParser } from 'accessdb-parser'
 import arrayBufferToBuffer from 'arraybuffer-to-buffer'
+import { HiOutlineUpload } from 'react-icons/hi'
+import { FcCheckmark } from 'react-icons/fc'
 
 const FileUploadSua = () => {
   const [txt, setTxt] = useState('')
@@ -62,46 +64,59 @@ const FileUploadSua = () => {
           )
 
           send(txtData, mdbData)
+          setTxt('')
+          setMdb('')
         }
       }
     }
-
-    setTxt('')
-    setMdb('')
   }
 
   return (
-    <Fragment>
-      <form
-        className='d-flex justify-content-center flex-column'
-        onSubmit={onSubmit}
-      >
-        <label style={{ width: 200, marginLeft: '44.5%' }}>.SUA</label>
-        <input
-          type='file'
-          className='custom-file-input'
-          style={{ width: 200, marginLeft: '44.5%' }}
-          id='customFile'
-          onChange={onChangeTxt}
-        />
+    <div className='py-12'>
+      <div className='mx-auto max-w-7xl sm:px-6 lg:px-8'>
+        <form
+          className='flex flex-col items-center py-12 px-6 rounded-md border-2 border-dashed'
+          onSubmit={onSubmit}
+        >
+          <HiOutlineUpload className='h-12 w-12' />
+          <label
+            className='mt-3 bg-white px-4 h-9 inline-flex items-center rounded border 
+          border-gray-300 shadow-sm text-sm font-medium text-gray-700 focus-within:ring-2 
+          focus-within:ring-offset-2 focus-within:primary cursor-pointer'
+          >
+            Seleccionar .SUA
+            <input
+              type='file'
+              className='sr-only'
+              id='customFile'
+              onChange={onChangeTxt}
+            />
+            {txt !== '' && <FcCheckmark />}
+          </label>
 
-        <label style={{ width: 200, marginLeft: '44.5%' }}>.mdb</label>
-        <input
-          type='file'
-          className='custom-file-input'
-          style={{ width: 200, marginLeft: '44.5%' }}
-          id='customFile'
-          onChange={onChangeMdb}
-        />
+          <label
+            className='mt-3 bg-white px-4 h-9 inline-flex items-center rounded border 
+          border-gray-300 shadow-sm text-sm font-medium text-gray-700 focus-within:ring-2 
+          focus-within:ring-offset-2 focus-within:primary cursor-pointer'
+          >
+            Seleccionar .MDB
+            <input
+              type='file'
+              className='sr-only'
+              id='customFile'
+              onChange={onChangeMdb}
+            />
+            {mdb !== '' && <FcCheckmark />}
+          </label>
 
-        <input
-          type='submit'
-          value='Subir'
-          className='btn btn-primary btn-block mt-4'
-          style={{ width: 200, marginLeft: '44.5%' }}
-        />
-      </form>
-    </Fragment>
+          <input
+            type='submit'
+            value='Subir archivos'
+            className='mt-3 btn btn-active btn-primary text-white'
+          />
+        </form>
+      </div>
+    </div>
   )
 }
 
