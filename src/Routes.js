@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'
 import RegPatPage from './pages/RegPatPage'
 import SuaPage from './pages/Sua/SuaPage'
 import SuaResumen from './pages/Sua/SuaResumen'
+import SuaPagoMensual from './pages/Sua/SuaPagoMensual'
 import EmisionPage from './pages/EmisionPage'
 
 const RoutesSwitch = () => {
@@ -13,6 +14,7 @@ const RoutesSwitch = () => {
         <Route exact path='/nrp' element={<RegPatPage />} />
         <Route exact path='/sua' element={<SuaPage />} />
         <Route exact path='/sua/resumen' element={<SuaResumen />} />
+        <Route exact path='/sua/mensual' element={<SuaPagoMensual />} />
         <Route exact path='/emision' element={<EmisionPage />} />
       </Routes>
   )

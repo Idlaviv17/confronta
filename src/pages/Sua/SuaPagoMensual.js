@@ -1,8 +1,7 @@
-import React from 'react'
-import FileUploadSua from '../../components/FileUploadSua'
 import TopBar from '../../components/TopBar'
+import TablePagoMensualSua from '../../components/TablePagoMensualSua'
 
-const SuaPage = () => {
+const SuaPagoMensual = () => {
   const topBarBtns = [
     {
       name: 'Leer Disco',
@@ -21,11 +20,11 @@ const SuaPage = () => {
   return (
     <div>
       <TopBar btns={topBarBtns} />
-      <div className='p-[100px]'>
-        <FileUploadSua />
+      <div className='m-[100px]'>
+        <TablePagoMensualSua />
       </div>
     </div>
   )
 }
 
-export default SuaPage
+export default SuaPagoMensual

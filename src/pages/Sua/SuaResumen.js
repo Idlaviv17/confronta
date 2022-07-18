@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import TopBar from '../../components/TopBar'
 import axios from 'axios'
 import TableResumenSua from '../../components/TableResumenSua'
@@ -33,13 +33,17 @@ const SuaResumen = () => {
       name: 'Resumen',
       to: '/sua/resumen',
     },
+    {
+      name: 'Pago Mensual',
+      to: '/sua/mensual',
+    },
   ]
 
   return (
     <div>
       <TopBar btns={topBarBtns} />
       <div className='m-[100px]'>
-          <TableResumenSua info={info} />
+        <TableResumenSua info={info} />
       </div>
     </div>
   )
