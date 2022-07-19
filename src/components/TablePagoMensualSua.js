@@ -1,57 +1,60 @@
-const TablePagoMensualSua = () => {
- return (
-  <div>
-    <div className='overflow-x-auto mt-4'>
-      <table className='table table-compact w-full'>
-        <caption className='text-xl m-2 font-medium'>CÉDULA DE AUTODETERMINACIÓN DE CUOTAS</caption>
-        <tbody>
+const TablePagoMensualSua = ({ info }) => {
+  const header = info.header
+  const body = info.body
+  const footer = info.footer
+  return (
+    <div>
+      <div className='overflow-x-auto mt-4'>
+        <table className='table table-compact w-full'>
+          <caption className='text-xl m-2 font-medium'>CÉDULA DE AUTODETERMINACIÓN DE CUOTAS</caption>
+          <tbody>
               <tr>
                 <td>
-                  <span className='font-medium hover:font-bold'>Fecha :</span> {'text'} 
+                  <span className='font-medium hover:font-bold'>Fecha :</span> {header.FECHA} 
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'> Población :</span> {'text'}
+                  <span className='font-medium hover:font-bold'> Población :</span> {header.POBMUNDEL}
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span className='font-medium hover:font-bold'>Registro Patronal :</span> {'text'} 
-                  <span className='font-medium hover:font-bold'> RFC :</span> {'text'}
+                  <span className='font-medium hover:font-bold'>Registro Patronal :</span> {header.REGPATRON} 
+                  <span className='font-medium hover:font-bold'> RFC :</span> {header.RFCPATRON}
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Area Geográfica :</span> {'text'}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span className='font-medium hover:font-bold'>Nombre o Razón Social :</span> {'text'}
-                </td>
-                <td>
-                <span className='font-medium hover:font-bold'>Del :</span> {'text'}
+                  <span className='font-medium hover:font-bold'>Area Geográfica :</span> {header.AREAGEO}
                 </td>
               </tr>
               <tr>
                 <td>
-                <span className='font-medium hover:font-bold'>Domicilio :</span> {'text'}
+                  <span className='font-medium hover:font-bold'>Nombre o Razón Social :</span> {header.RAZONSOCIAL}
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>SubDel :</span> {'text'}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span className='font-medium hover:font-bold'>Código Postal :</span> {'text'} 
-                </td>
-                <td>
-                  <span className='font-medium hover:font-bold'>PrimaRT :</span> {'text'}
+                <span className='font-medium hover:font-bold'>Del :</span> {header.DELIMSS}
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span className='font-medium hover:font-bold'>Actividad :</span> {'text'} 
+                <span className='font-medium hover:font-bold'>Domicilio :</span> {header.CALLENOCOL}
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Mes y Año del Proceso :</span> {'text'}
+                  <span className='font-medium hover:font-bold'>SubDel :</span> {header.SUBDELIMSS}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span className='font-medium hover:font-bold'>Código Postal :</span> {header.CODPOS} 
+                </td>
+                <td>
+                  <span className='font-medium hover:font-bold'>PrimaRT :</span> {header.PRIMART}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span className='font-medium hover:font-bold'>Actividad :</span> {header.ACTECO} 
+                </td>
+                <td>
+                  <span className='font-medium hover:font-bold'>Mes y Año del Proceso :</span> {`${header.MES}/${header.ANO}`}
                 </td>
               </tr>
             </tbody>

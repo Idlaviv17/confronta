@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import TopBar from '../../components/TopBar'
 import axios from 'axios'
+import TopBar from '../../components/TopBar'
 import TableResumenSua from '../../components/TableResumenSua'
 
 const SuaResumen = () => {
   const [info, setInfo] = useState({})
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,8 +17,9 @@ const SuaResumen = () => {
           params: { ANO, MES, REGPATRON },
         })
         setInfo(res.data)
+        setLoading(false)
       } catch (err) {
-        alert('Existe un problema al leer el patrón')
+        alert('Existe un problema al leer el resumen')
       }
     }
 
@@ -43,7 +45,7 @@ const SuaResumen = () => {
     <div>
       <TopBar btns={topBarBtns} />
       <div className='m-[100px]'>
-        <TableResumenSua info={info} />
+      {loading ? <h1 className='text-center'>Cargando...</h1> : <TableResumenSua info={info} />}
       </div>
     </div>
   )
