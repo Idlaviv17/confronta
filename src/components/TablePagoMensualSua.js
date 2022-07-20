@@ -1,3 +1,5 @@
+import TableCuota from './TableCuota'
+
 const TablePagoMensualSua = ({ info }) => {
   const header = info.header
   const body = info.body
@@ -61,7 +63,7 @@ const TablePagoMensualSua = ({ info }) => {
           </table>
         </div>
         <div className='overflow-x-auto mt-4'>
-          <table className='table table-compact w-full'>
+          <table className='table table-fixed table-compact w-full'>
             <thead>
               <tr>
                 <th>No Afiliación</th>
@@ -109,54 +111,7 @@ const TablePagoMensualSua = ({ info }) => {
           </table>
         </div>
         <div className='overflow-x-auto mt-4'>
-          <table className='table table-compact w-full'>
-            <thead>
-              <tr>
-                <td>24957824154</td>
-                <td>ACEVEDO CORREA LUCRECIA</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>AECL781121MSRCR06</td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </thead>
-            <tbody>     
-              <tr>
-                <td>$142.30</td>
-                <td>24</td>
-                <td>0</td>
-                <td>0</td>
-                <td>$425.36</td>
-                <td>$0.00</td>
-                <td>$32.45</td>
-                <td>$48.67</td>
-                <td>$262.27</td>
-                <td>$81.12</td>
-                <td>$34.15</td>
-                <td>$884.02</td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>08.- Reingreso</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>08/12/2020</td>
-                <td></td>
-                <td>$142.30</td>
-                <td>00</td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+          {body.map((cuota) => <TableCuota key={cuota.NUMAFIL} cuota={cuota} />)}
         </div>
         <div className='overflow-x-auto mt-5'>
           <table className='table table-compact w-full'>
@@ -169,50 +124,50 @@ const TablePagoMensualSua = ({ info }) => {
             <tbody>
               <tr>
                 <td>
-                  <span className='font-medium hover:font-bold'>Número de trabajadores :</span> {'text'} 
+                  <span className='font-medium hover:font-bold'>Número de trabajadores :</span> {footer.TOTAL_COTIZANTES} 
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'> Prestaciones en Dinero :</span> {'text'}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span className='font-medium hover:font-bold'>Número de días cotizados :</span> {'text'} 
-                </td>
-                <td>
-                  <span className='font-medium hover:font-bold'>Gastos Médicos Pensionados :</span> {'text'}
+                  <span className='font-medium hover:font-bold'> Prestaciones en Dinero :</span> {footer.CT_PD}
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span className='font-medium hover:font-bold'>Número de Incapacidades :</span> {'text'}
+                  <span className='font-medium hover:font-bold'>Número de días cotizados :</span> {footer.RTOTAL0} 
                 </td>
                 <td>
-                <span className='font-medium hover:font-bold'>Riesgos de Trabajos :</span> {'text'}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                <span className='font-medium hover:font-bold'>Número de Ausentismos :</span> {'text'}
-                </td>
-                <td>
-                  <span className='font-medium hover:font-bold'>Invalidez y Vida :</span> {'text'}
+                  <span className='font-medium hover:font-bold'>Gastos Médicos Pensionados :</span> {footer.CT_GMP}
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span className='font-medium hover:font-bold'>Cuota Fija :</span> {'text'} 
+                  <span className='font-medium hover:font-bold'>Número de Incapacidades :</span> {footer.INCAPACIDADES}
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Guarderías y Prestaciones Sociales :</span> {'text'}
+                <span className='font-medium hover:font-bold'>Riesgos de Trabajos :</span> {footer.CT_RT}
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span className='font-medium hover:font-bold'>Excedente 3 SMGDF :</span> {'text'} 
+                <span className='font-medium hover:font-bold'>Número de Ausentismos :</span> {footer.AUSENTISMOS}
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Total Periodo :</span> {'text'}
+                  <span className='font-medium hover:font-bold'>Invalidez y Vida :</span> {footer.CT_IYV}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span className='font-medium hover:font-bold'>Cuota Fija :</span> {footer.CT_EYM} 
+                </td>
+                <td>
+                  <span className='font-medium hover:font-bold'>Guarderías y Prestaciones Sociales :</span> {footer.CT_GPS}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span className='font-medium hover:font-bold'>Excedente 3 SMGDF :</span> {footer.CT_EXCEDE} 
+                </td>
+                <td>
+                  <span className='font-medium hover:font-bold'>Total Periodo :</span> {footer.SUBTOTAL_SEG}
                 </td>
               </tr>
             </tbody>
