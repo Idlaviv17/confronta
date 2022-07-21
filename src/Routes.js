@@ -6,7 +6,10 @@ import SuaPage from './pages/Sua/SuaPage'
 import SuaResumen from './pages/Sua/SuaResumen'
 import SuaPagoMensual from './pages/Sua/SuaPagoMensual'
 import SuaPagoBimestral from './pages/Sua/SuaPagoBimestral'
-import EmisionPage from './pages/EmisionPage'
+import EmisionPage from './pages/Emision/EmisionPage'
+import EmisionResumen from './pages/Emision/EmisionResumen'
+import EmisionPagoMensual from './pages/Emision/EmisionPagoMensual'
+import EmisionPagoBimestral from './pages/Emision/EmisionPagoBimestral'
 
 const RoutesSwitch = () => {
   return (
@@ -18,6 +21,9 @@ const RoutesSwitch = () => {
         <Route exact path='/sua/mensual' element={<SuaPagoMensual />} />
         <Route exact path='/sua/bimestral' element={<SuaPagoBimestral />} />
         <Route exact path='/emision' element={<EmisionPage />} />
+        <Route exact path='/emision/resumen' element={<EmisionResumen />} />
+        <Route exact path='/emision/mensual' element={<EmisionPagoMensual />} />
+        <Route exact path='/emision/bimestral' element={<EmisionPagoBimestral />} />
       </Routes>
   )
 }
