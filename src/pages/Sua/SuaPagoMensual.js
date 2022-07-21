@@ -39,13 +39,21 @@ const SuaPagoMensual = () => {
       name: 'Pago Mensual',
       to: '/sua/mensual',
     },
+    {
+      name: 'Pago Bimestral',
+      to: '/sua/bimestral',
+    },
   ]
 
   return (
     <div>
       <TopBar btns={topBarBtns} />
       <div className='m-[100px]'>
-        {loading ? <h1 className='text-center'>Cargando...</h1> : <TablePagoMensualSua info={info} />}
+        {loading ? (
+          <h1 className='text-center'>Cargando...</h1>
+        ) : (
+          <TablePagoMensualSua info={info} />
+        )}
       </div>
     </div>
   )

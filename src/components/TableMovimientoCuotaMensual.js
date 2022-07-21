@@ -1,6 +1,6 @@
 const TableMovimientoCuota = ({ mov }) => {
   return (
-    <tr>
+    <tr className='hover'>
       <td></td>
       <td>{mov.TIPOMOV}</td>
       <td></td>

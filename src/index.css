@@ -23,5 +23,9 @@
     z-index: 99999999;
     @apply fixed navbar w-screen bg-gray-50 mb-[48px] top-0 
   }
+
+  .stop-stretching {
+    width: 150px;
+  }
 }
   

@@ -16,6 +16,10 @@ const SuaPage = () => {
       name: 'Pago Mensual',
       to: '/sua/mensual',
     },
+    {
+      name: 'Pago Bimestral',
+      to: '/sua/bimestral',
+    },
   ]
 
   return (

@@ -1,11 +1,11 @@
-import TableMovimientoCuota from './TableMovimientoCuota'
+import TableMovimientoCuotaMensual from './TableMovimientoCuotaMensual'
 
-const TableCuota = ({ cuota }) => {
+const TableCuotaMensual = ({ cuota }) => {
   return (
     <table className='table table-fixed table-compact w-full'>
       <thead>
-        <tr>
-          <td>{cuota.NUMAFIL}</td>
+        <tr className='hover'>
+          <td className='stop-stretching'>{cuota.NUMAFIL}</td>
           <td>{cuota.NOMBRE}</td>
           <td></td>
           <td></td>
@@ -20,7 +20,7 @@ const TableCuota = ({ cuota }) => {
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr className='hover'>
           <td>{cuota.ULTIMOSDI}</td>
           <td>{cuota.COTIZADOS}</td>
           <td>{cuota.INCAPACIDADES}</td>
@@ -35,7 +35,7 @@ const TableCuota = ({ cuota }) => {
           <td>{cuota.SUMA}</td>
         </tr>
         {cuota.MOVS.map((mov, idx) => (
-          <TableMovimientoCuota
+          <TableMovimientoCuotaMensual
             key={`
                 ${mov.TIPOMOV}
                 ${mov.FECHAMOVD}
@@ -51,4 +51,4 @@ const TableCuota = ({ cuota }) => {
   )
 }
 
-export default TableCuota
+export default TableCuotaMensual

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import TopBar from '../../components/TopBar'
-import TableResumenSua from '../../components/TableResumenSua'
+import TablePagoBimestralSua from '../../components/TablePagoBimestralSua'
 
-const SuaResumen = () => {
+const SuaPagoBimestral = () => {
   const [info, setInfo] = useState({})
   const [loading, setLoading] = useState(true)
 
@@ -13,13 +13,13 @@ const SuaResumen = () => {
       const MES = '12'
       const REGPATRON = 'E6029854107'
       try {
-        const res = await axios.get('/api/sua/resumen', {
+        const res = await axios.get('/api/sua/bimestral', {
           params: { ANO, MES, REGPATRON },
         })
         setInfo(res.data)
         setLoading(false)
       } catch (err) {
-        alert('Existe un problema al leer el resumen')
+        alert('Existe un problema al leer el pago bimestral')
       }
     }
 
@@ -52,11 +52,11 @@ const SuaResumen = () => {
         {loading ? (
           <h1 className='text-center'>Cargando...</h1>
         ) : (
-          <TableResumenSua info={info} />
+          <TablePagoBimestralSua info={info} />
         )}
       </div>
     </div>
   )
 }
 
-export default SuaResumen
+export default SuaPagoBimestral
