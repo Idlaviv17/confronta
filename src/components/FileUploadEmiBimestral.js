@@ -1,6 +1,8 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import JSZip from 'jszip'
+import { HiOutlineUpload } from 'react-icons/hi'
+import { FcCheckmark } from 'react-icons/fc'
 
 const FileUploadEmiBimestral = () => {
   const [file, setFile] = useState('')
@@ -49,7 +51,9 @@ const FileUploadEmiBimestral = () => {
       const ANO = parseInt(data[2].content.slice(95, 99))
       const MES = data[2].content.slice(93, 95).trim()
       const REGPATRON = data[2].content.slice(21, 32).trim()
-      alert(`ARCHIVO: EMISIÓN\nAÑO: ${ANO}\nMES: ${MES}\nREGPATRON: ${REGPATRON}`)
+      alert(
+        `ARCHIVO: EMISIÓN\nAÑO: ${ANO}\nMES: ${MES}\nREGPATRON: ${REGPATRON}`
+      )
 
       send(data)
     }
@@ -62,27 +66,37 @@ const FileUploadEmiBimestral = () => {
   }
 
   return (
-    <Fragment>
-      <form
-        className='d-flex justify-content-center flex-column'
-        onSubmit={onSubmit}
-      >
-        <input
-          type='file'
-          className='custom-file-input'
-          style={{ width: 200, marginLeft: '44.5%' }}
-          id='customFile'
-          onChange={onChange}
-        />
+    <div className='py-12'>
+      <h1 className='text-center text-2xl mb-4'>Emisión Bimestral</h1>
+      <div className='mx-auto max-w-7xl sm:px-6 lg:px-8'>
+        <form
+          className='flex flex-col items-center py-12 px-6 rounded-md border-2 border-dashed'
+          onSubmit={onSubmit}
+        >
+          <HiOutlineUpload className='h-12 w-12' />
+          <label
+            className='mt-3 bg-white px-4 h-9 inline-flex items-center rounded border 
+          border-gray-300 shadow-sm text-sm font-medium text-gray-700 focus-within:ring-2 
+          focus-within:ring-offset-2 focus-within:primary cursor-pointer'
+          >
+            Seleccionar Emisión Bimestral
+            <input
+              type='file'
+              className='sr-only'
+              id='customFile'
+              onChange={onChange}
+            />
+            {file !== '' && <FcCheckmark />}
+          </label>
 
-        <input
-          type='submit'
-          value='Subir'
-          className='btn btn-primary btn-block mt-4'
-          style={{ width: 200, marginLeft: '44.5%' }}
-        />
-      </form>
-    </Fragment>
+          <input
+            type='submit'
+            value='Subir archivos'
+            className='mt-3 btn btn-active btn-primary text-white'
+          />
+        </form>
+      </div>
+    </div>
   )
 }
 
