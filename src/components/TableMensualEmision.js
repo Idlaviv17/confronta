@@ -109,50 +109,50 @@ const TableMensualEmision = ({ info }) => {
               </tr>
               <tr>
                 <td>
-                  <span className='font-medium hover:font-bold'>Cuota Fija :</span> {footer.SUMA_EMIM_IMP_EYM_FIJA} 
+                  <span className='font-medium hover:font-bold'>Cuota Fija :</span> ${footer.SUMA_EMIM_IMP_EYM_FIJA} 
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Gastos Médicos Pat :</span> {footer.SUMA_EMIM_IMP_EYM_ESPE}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span className='font-medium hover:font-bold'>Excedente Pat :</span> {footer.SUMA_EMIM_IMP_EYM_EXCE}
-                </td>
-                <td>
-                <span className='font-medium hover:font-bold'>Gastos Médicos Obr :</span> {footer.SUMA_EMIM_IMP_EYM_ESPE_O}
+                  <span className='font-medium hover:font-bold'>Gastos Médicos Pat :</span> ${footer.SUMA_EMIM_IMP_EYM_ESPE}
                 </td>
               </tr>
               <tr>
                 <td>
-                <span className='font-medium hover:font-bold'>Excedente Obr :</span> {footer.SUMA_EMIM_IMP_EYM_EXCE_O}
+                  <span className='font-medium hover:font-bold'>Excedente Pat :</span> ${footer.SUMA_EMIM_IMP_EYM_EXCE}
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Invalidez y Vida Pat :</span> {footer.SUMA_EMIM_IMP_IV}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span className='font-medium hover:font-bold'>Prest. en Dinero Pat :</span> {footer.SUMA_EMIM_IMP_EYM_PRES} 
-                </td>
-                <td>
-                  <span className='font-medium hover:font-bold'>Invalidez y Vida Obr :</span> {footer.SUMA_EMIM_IMP_IV_O}
+                <span className='font-medium hover:font-bold'>Gastos Médicos Obr :</span> ${footer.SUMA_EMIM_IMP_EYM_ESPE_O}
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span className='font-medium hover:font-bold'>Prest. en Dinero Obr :</span> {footer.SUMA_EMIM_IMP_EYM_PRES_O} 
+                <span className='font-medium hover:font-bold'>Excedente Obr :</span> ${footer.SUMA_EMIM_IMP_EYM_EXCE_O}
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>G.P.S :</span> {footer.SUMA_EMIM_IMP_GUAR}
+                  <span className='font-medium hover:font-bold'>Invalidez y Vida Pat :</span> ${footer.SUMA_EMIM_IMP_IV}
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span className='font-medium hover:font-bold'>Riesgo de Trabajo :</span> {footer.SUMA_EMIM_IMP_RT} 
+                  <span className='font-medium hover:font-bold'>Prest. en Dinero Pat :</span> ${footer.SUMA_EMIM_IMP_EYM_PRES} 
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Suma :</span> {footer.SUMA_FINAL}
+                  <span className='font-medium hover:font-bold'>Invalidez y Vida Obr :</span> ${footer.SUMA_EMIM_IMP_IV_O}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span className='font-medium hover:font-bold'>Prest. en Dinero Obr :</span> ${footer.SUMA_EMIM_IMP_EYM_PRES_O} 
+                </td>
+                <td>
+                  <span className='font-medium hover:font-bold'>G.P.S :</span> ${footer.SUMA_EMIM_IMP_GUAR}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span className='font-medium hover:font-bold'>Riesgo de Trabajo :</span> ${footer.SUMA_EMIM_IMP_RT} 
+                </td>
+                <td>
+                  <span className='font-medium hover:font-bold'>Suma :</span> ${footer.SUMA_FINAL}
                 </td>
               </tr>
             </tbody>
