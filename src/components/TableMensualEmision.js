@@ -8,7 +8,7 @@ const TableMensualEmision = ({ info }) => {
     <div>
       <div className='overflow-x-auto mt-4'>
         <table className='table table-compact w-full'>
-          <caption className='text-xl m-2 font-medium'>CÉDULA DE AUTODETERMINACIÓN DE CUOTAS</caption>
+          <caption className='text-xl m-2 font-medium'>CONSULTA DE LIQUIDACIONES EMITIDAS IMSS</caption>
           <tbody>
               <tr>
                 <td>

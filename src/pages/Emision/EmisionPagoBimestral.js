@@ -19,7 +19,7 @@ const EmisionPagoBimestral = () => {
         setInfo(res.data)
         setLoading(false)
       } catch (err) {
-        alert('Existe un problema al leer el pago bimestral')
+        alert('Existe un problema al leer el reporte bimestral')
       }
     }
 

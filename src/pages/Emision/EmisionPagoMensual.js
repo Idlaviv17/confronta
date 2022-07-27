@@ -19,7 +19,7 @@ const EmisionPagoMensual = () => {
         setInfo(res.data)
         setLoading(false)
       } catch (err) {
-        alert('Existe un problema al leer el resumen')
+        alert('Existe un problema al leer el reporte mensual')
       }
     }
 
