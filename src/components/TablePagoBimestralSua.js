@@ -1,11 +1,12 @@
+import React from 'react'
 import TableCuotaBimestral from "./TableCuotaBimestral"
 
-const TablePagoBimestralSua = ({ info }) => {
+const TablePagoBimestralSua = React.forwardRef(({ info }, ref) => {
   const header = info.header
   const body = info.body
   const footer = info.footer
   return (
-    <div>
+    <div ref={ref}>
       <div className='overflow-x-auto mt-4'>
         <table className='table table-compact w-full'>
           <caption className='text-xl m-2 font-medium'>CÉDULA DE AUTODETERMINACIÓN DE CUOTAS, APORTACIONES Y AMORTIZACIONES</caption>
@@ -183,6 +184,6 @@ const TablePagoBimestralSua = ({ info }) => {
         </div>
   </div>
  )
-}
+})
 
 export default TablePagoBimestralSua

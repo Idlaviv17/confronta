@@ -1,6 +1,8 @@
-const TableResumenSua = ({ info }) => {
+import React from 'react'
+
+const TableResumenSua = React.forwardRef(({ info }, ref) => {
   return (
-    <div>
+    <div ref={ref}>
       <div className='overflow-x-auto mt-4'>
           <table className='table table-compact w-full'>
             <caption className='text-xl m-2 font-medium'>REPORTE RESUMEN DE PAGO</caption>
@@ -228,6 +230,6 @@ const TableResumenSua = ({ info }) => {
         </div>
     </div>
   )
-}
+})
 
 export default TableResumenSua

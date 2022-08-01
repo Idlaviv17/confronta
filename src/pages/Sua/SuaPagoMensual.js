@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
+import ReactToPrint from 'react-to-print'
 import axios from 'axios'
 import TopBar from '../../components/TopBar'
 import TablePagoMensualSua from '../../components/TablePagoMensualSua'
 
 const SuaPagoMensual = () => {
+  const tableRef = useRef()
+
   const [info, setInfo] = useState({})
   const [loading, setLoading] = useState(true)
 
@@ -48,11 +51,15 @@ const SuaPagoMensual = () => {
   return (
     <div>
       <TopBar btns={topBarBtns} />
-      <div className='m-[100px]'>
+      <ReactToPrint
+        trigger={() => <button className='print-btn'>Imprimir PDF</button>}
+        content={() => tableRef.current}
+      />
+      <div className='content'>
         {loading ? (
           <h1 className='text-center'>Cargando...</h1>
         ) : (
-          <TablePagoMensualSua info={info} />
+          <TablePagoMensualSua info={info} ref={tableRef} />
         )}
       </div>
     </div>

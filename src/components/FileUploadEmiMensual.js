@@ -117,7 +117,6 @@ const FileUploadEmiMensual = () => {
 
   return (
     <div className='py-12'>
-      <h1 className='text-center text-2xl mb-4'>Emisión</h1>
       <div className='mx-auto max-w-7xl sm:px-6 lg:px-8'>
         <form
           className='flex flex-col items-center py-12 px-6 rounded-md border-2 border-dashed'

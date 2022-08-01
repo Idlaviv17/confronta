@@ -20,12 +20,21 @@
   }
 
   .top-bar {
-    z-index: 99999999;
+    z-index: 99999998;
     @apply fixed navbar w-screen bg-gray-50 mb-[48px] top-0 
+  }
+
+  .print-btn {
+    z-index: 99999999;
+    @apply btn btn-primary fixed top-2 right-2
   }
 
   .stop-stretching {
     width: 150px;
+  }
+
+  .content {
+    @apply mt-[100px] m-5
   }
 }
   

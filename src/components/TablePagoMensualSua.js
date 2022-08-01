@@ -1,11 +1,12 @@
+import React from 'react'
 import TableCuotaMensual from './TableCuotaMensual'
 
-const TablePagoMensualSua = ({ info }) => {
+const TablePagoMensualSua = React.forwardRef(({ info }, ref) => {
   const header = info.header
   const body = info.body
   const footer = info.footer
   return (
-    <div>
+    <div ref={ref}>
       <div className='overflow-x-auto mt-4'>
         <table className='table table-compact w-full'>
           <caption className='text-xl m-2 font-medium'>CÉDULA DE AUTODETERMINACIÓN DE CUOTAS</caption>
@@ -175,6 +176,6 @@ const TablePagoMensualSua = ({ info }) => {
         </div>
   </div>
  )
-}
+})
 
 export default TablePagoMensualSua

@@ -1,11 +1,12 @@
+import React from 'react'
 import TableCuotaEmiMensual from './TableCuotaEmiMensual'
 
-const TableMensualEmision = ({ info }) => {
+const TableMensualEmision = React.forwardRef(({ info }, ref) => {
   const header = info.header
   const body = info.body
   const footer = info.footer
   return (
-    <div>
+    <div ref={ref}>
       <div className='overflow-x-auto mt-4'>
         <table className='table table-compact w-full'>
           <caption className='text-xl m-2 font-medium'>CONSULTA DE LIQUIDACIONES EMITIDAS IMSS</caption>
@@ -160,6 +161,6 @@ const TableMensualEmision = ({ info }) => {
         </div>
   </div>
  )
-}
+})
 
 export default TableMensualEmision
