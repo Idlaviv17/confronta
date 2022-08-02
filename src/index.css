@@ -26,7 +26,12 @@
 
   .print-btn {
     z-index: 99999999;
-    @apply btn btn-primary fixed top-2 right-2
+    @apply btn btn-primary fixed top-2 right-2 text-white
+  }
+
+  .filter {
+    z-index: 99999999;
+    @apply form-control fixed top-2 right-[145px] rounded
   }
 
   .stop-stretching {

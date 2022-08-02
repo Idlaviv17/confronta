@@ -1,7 +1,7 @@
 import React from 'react'
 import TableCuotaEmiBimestral from "./TableCuotaEmiBimestral"
 
-const TableBimestralEmision = React.forwardRef(({ info }, ref) => {
+const TableBimestralEmision = React.forwardRef(({ info, filter }, ref) => {
   const header = info.header
   const body = info.body
   const footer = info.footer
@@ -86,7 +86,15 @@ const TableBimestralEmision = React.forwardRef(({ info }, ref) => {
           </table>
         </div>
         <div className='overflow-x-auto mt-4'>
-          { body.map((cuota) => <TableCuotaEmiBimestral key={cuota.EBIA_NUMAFIL} cuota={cuota} />) }
+          {
+            filter === '' 
+            ? body.map((cuota) => <TableCuotaEmiBimestral key={cuota.EBIA_NUMAFIL} cuota={cuota} />)
+            : body
+              .filter(cuota => 
+                cuota.EBIA_NOM_TRAB.toLowerCase().includes(filter.toLowerCase()) 
+                || cuota.EBIA_NUMAFIL.toLowerCase().includes(filter.toLowerCase()) )
+              .map((cuota) => <TableCuotaEmiBimestral key={cuota.EBIA_NUMAFIL} cuota={cuota} />)
+          }
         </div>
         <div className='overflow-x-auto mt-5'>
           <table className='table table-compact w-full'>
