@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import ReactToPrint from 'react-to-print'
 import axios from 'axios'
 import TopBar from '../../components/TopBar'
 import TableResumenEmision from '../../components/TableResumenEmision'
@@ -11,9 +10,9 @@ const EmisionResumen = () => {
   useEffect(() => {
     // Fetches specific data from the API and updates state
     const fetchData = async () => {
-      const ANO = 2019
-      const MES = '11'
-      const REGPATRON = 'E6029854108'
+      const ANO = 2022
+      const MES = '04'
+      const REGPATRON = 'E6030587100'
       try {
         const res = await axios.get('/api/emi/resumen', {
           params: { ANO, MES, REGPATRON },
@@ -52,12 +51,6 @@ const EmisionResumen = () => {
     <div>
       {/* TopBar */}
       <TopBar btns={topBarBtns} />
-
-      {/* Print PDF button (needs ref) */}
-      <ReactToPrint
-        trigger={() => <button className='print-btn'>Imprimir PDF</button>}
-        content={() => tableRef.current}
-      />
 
       {/* Main content (report) */}
       <div className='content'>

@@ -21,18 +21,18 @@ const TableCuotaMensual = ({ cuota }) => {
       </thead>
       <tbody>
         <tr className='hover'>
-          <td>{cuota.ULTIMOSDI}</td>
+          <td>${cuota.ULTIMOSDI}</td>
           <td>{cuota.COTIZADOS}</td>
           <td>{cuota.INCAPACIDADES}</td>
           <td>{cuota.AUSENTISMOS}</td>
-          <td>{cuota.C_EYM}</td>
-          <td>{cuota.C_EXCEDE}</td>
-          <td>{cuota.C_PD}</td>
-          <td>{cuota.C_GMP}</td>
-          <td>{cuota.C_RT}</td>
-          <td>{cuota.C_IYV}</td>
-          <td>{cuota.C_GPS}</td>
-          <td>{cuota.SUMA}</td>
+          <td>${cuota.C_EYM}</td>
+          <td>${cuota.C_EXCEDE}</td>
+          <td>${cuota.C_PD}</td>
+          <td>${cuota.C_GMP}</td>
+          <td>${cuota.C_RT}</td>
+          <td>${cuota.C_IYV}</td>
+          <td>${cuota.C_GPS}</td>
+          <td>${cuota.SUMA}</td>
         </tr>
         {cuota.MOVS.map((mov, idx) => (
           <TableMovimientoCuotaMensual

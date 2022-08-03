@@ -17,7 +17,7 @@ const TableMensualEmision = React.forwardRef(({ info, filter }, ref) => {
                   <span className='font-medium hover:font-bold'>Fecha de impresión:</span> {header.FECHA} 
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'> Mes y año del proceso :</span> {`${header.MES}/${header.ANO}`}
+                  <span className='font-medium hover:font-bold'> Mes y año del proceso :</span> {`${header.MES} / ${header.ANO}`}
                 </td>
               </tr>
               <tr>

@@ -8,7 +8,7 @@ const TableMovimientoCuota = ({ mov }) => {
       <td></td>
       <td>{mov.FECHAMOVD}</td>
       <td></td>
-      <td>{mov.SDIN}</td>
+      <td>${mov.SDIN}</td>
       <td>{mov.DIASINCIDENCIA}</td>
       <td>{mov.FOLIOINC}</td>
       <td></td>

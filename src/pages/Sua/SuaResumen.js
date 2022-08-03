@@ -13,9 +13,9 @@ const SuaResumen = () => {
   useEffect(() => {
     // Fetches specific data from the API and updates state
     const fetchData = async () => {
-      const ANO = 2020
-      const MES = '12'
-      const REGPATRON = 'E6029854107'
+      const ANO = 2022
+      const MES = '04'
+      const REGPATRON = 'E6030587100'
       try {
         const res = await axios.get('/api/sua/resumen', {
           params: { ANO, MES, REGPATRON },

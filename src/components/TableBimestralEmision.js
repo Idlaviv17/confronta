@@ -23,7 +23,7 @@ const TableBimestralEmision = React.forwardRef(({ info, filter }, ref) => {
                   <span className='font-medium hover:font-bold'>Registro Patronal :</span> {header.REGPATRON} 
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'> Bim y Año del proceso :</span> {`${header.EBIP_BIM_EMISI}/${header.EBIP_ANU_EMISI}`}
+                  <span className='font-medium hover:font-bold'> Bim y Año del proceso :</span> {`${header.EBIP_BIM_EMISI} / ${header.EBIP_ANU_EMISI}`}
                 </td>
               </tr>
               <tr>

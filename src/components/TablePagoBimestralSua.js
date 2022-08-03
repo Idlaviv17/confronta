@@ -26,7 +26,7 @@ const TablePagoBimestralSua = React.forwardRef(({ info, filter }, ref) => {
                   <span className='font-medium hover:font-bold'> RFC :</span> {header.RFCPATRON}
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Aportación Patronal :</span> {header.PORINFONAVIT}
+                  <span className='font-medium hover:font-bold'>Aportación Patronal :</span> {header.PORINFONAVIT}%
                 </td>
               </tr>
               <tr>
@@ -58,7 +58,7 @@ const TablePagoBimestralSua = React.forwardRef(({ info, filter }, ref) => {
                   <span className='font-medium hover:font-bold'>Actividad :</span> {header.ACTECO} 
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Mes y Año del Proceso :</span> {`${header.MES}/${header.ANO}`}
+                  <span className='font-medium hover:font-bold'>Bimestre y Año del Proceso :</span> {`${header.BIM} / ${header.ANO}`}
                 </td>
               </tr>
             </tbody>
@@ -78,7 +78,7 @@ const TablePagoBimestralSua = React.forwardRef(({ info, filter }, ref) => {
                 <th></th>
                 <th>CURP</th>
                 <th></th>
-                <th>Aporta</th>
+                <th></th>
                 <th></th>
                 <th></th>
               </tr>
@@ -93,7 +93,7 @@ const TablePagoBimestralSua = React.forwardRef(({ info, filter }, ref) => {
                 <th>Núm Crédito</th>
                 <th>Tipo Crédito</th>
                 <th>Valor Crédito</th>
-                <th>Patronal</th>
+                <th>Apor Patronal</th>
                 <th>Amort</th>
                 <th>Suma Info</th>
               </tr>
@@ -140,10 +140,10 @@ const TablePagoBimestralSua = React.forwardRef(({ info, filter }, ref) => {
                   <span className='font-medium hover:font-bold'>Número de trabajadores :</span> {footer.TRABCOTIZANTES} 
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'> Retiro :</span> {footer.CT_RET}
+                  <span className='font-medium hover:font-bold'> Retiro :</span> ${footer.CT_RET}
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'> Aportación Patronal sin Crédito :</span> {footer.T_APO_PAT_CI}
+                  <span className='font-medium hover:font-bold'> Aportación Patronal sin Crédito :</span> ${footer.T_APO_PAT_CI}
                 </td>
               </tr>
               <tr>
@@ -151,10 +151,10 @@ const TablePagoBimestralSua = React.forwardRef(({ info, filter }, ref) => {
                   <span className='font-medium hover:font-bold'>Número de acreditados :</span> {footer.NUM_ACREDITADOS}
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Cesantía y Vejez :</span> {footer.CT_CYV}
+                  <span className='font-medium hover:font-bold'>Cesantía y Vejez :</span> ${footer.CT_CYV}
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Aportación Patronal con Crédito :</span> {footer.T_APO_PAT_AMOR}
+                  <span className='font-medium hover:font-bold'>Aportación Patronal con Crédito :</span> ${footer.T_APO_PAT_AMOR}
                 </td>
               </tr>
               <tr>
@@ -162,10 +162,10 @@ const TablePagoBimestralSua = React.forwardRef(({ info, filter }, ref) => {
                   <span className='font-medium hover:font-bold'>Días cotizados :</span> {footer.DIASCOTIZADOS}
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Total RCV :</span> {footer.SUBTOTAL_RETCYV}
+                  <span className='font-medium hover:font-bold'>Total RCV :</span> ${footer.SUBTOTAL_RETCYV}
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Amortización :</span> {footer.T_AMOR_INFO}
+                  <span className='font-medium hover:font-bold'>Amortización :</span> ${footer.T_AMOR_INFO}
                 </td>
               </tr>
               <tr>
@@ -175,17 +175,17 @@ const TablePagoBimestralSua = React.forwardRef(({ info, filter }, ref) => {
                 <td>
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Total a Pagar INFONAVIT :</span> {footer.TOTAL_INFO}
+                  <span className='font-medium hover:font-bold'>Total a Pagar INFONAVIT :</span> ${footer.TOTAL_INFO}
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span className='font-medium hover:font-bold'>Ausentismos en Movimientos :</span> {footer.SUMA_AUSENTISMO}
+                  <span className='font-medium hover:font-bold'>Ausentismos :</span> {footer.SUMA_AUSENTISMO}
                 </td>
                 <td>
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Total :</span> {footer.SUMA_BIM} 
+                  <span className='font-medium hover:font-bold'>Total :</span> ${footer.SUMA_BIM} 
                 </td>
               </tr>
             </tbody>

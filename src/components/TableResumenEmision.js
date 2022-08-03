@@ -68,62 +68,62 @@ const TableResumenEmision = ({ info }) => {
               <tr className='hover'>
                 <td>Cuota Fija</td>
                 <td></td>
-                <td>{info.EMIP_IMP_EYM_FIJA}</td>
+                <td>${info.EMIP_IMP_EYM_FIJA}</td>
               </tr>
               <tr className='hover'>
                 <td>Excedente 3 SMGD Patrón</td>
                 <td></td>
-                <td>{info.EMIP_IMP_EYM_EXCE}</td>
+                <td>${info.EMIP_IMP_EYM_EXCE}</td>
               </tr>
               <tr className='hover'>
                 <td>Excedente 3 SMGD Obr</td>
                 <td></td>
-                <td>{info.EMIP_IMP_EYM_EXCE_O}</td>
+                <td>${info.EMIP_IMP_EYM_EXCE_O}</td>
               </tr>
               <tr className='hover'>
                 <td>Prestaciones en Dinero Patrón</td>
                 <td></td>
-                <td>{info.EMIP_IMP_EYM_PRED}</td>
+                <td>${info.EMIP_IMP_EYM_PRED}</td>
               </tr>
               <tr className='hover'>
                 <td>Prestaciones en Dinero Obr</td>
                 <td></td>
-                <td>{info.EMIP_IMP_EYM_PRED_O}</td>
+                <td>${info.EMIP_IMP_EYM_PRED_O}</td>
               </tr>
               <tr className='hover'>
                 <td>Gastos Médicos Pensionados Patrón</td>
                 <td></td>
-                <td>{info.EMIP_IMP_EYM_PREE}</td>
+                <td>${info.EMIP_IMP_EYM_PREE}</td>
               </tr>
               <tr className='hover'>
                 <td>Gastos Médicos Pensionados Obr</td>
                 <td></td>
-                <td>{info.EMIP_IMP_EYM_PREE_O}</td>
+                <td>${info.EMIP_IMP_EYM_PREE_O}</td>
               </tr>
               <tr className='hover'>
                 <td>Riesgos De Trabajos</td>
                 <td></td>
-                <td>{info.EMIP_IMP_RIES_TRA}</td>
+                <td>${info.EMIP_IMP_RIES_TRA}</td>
               </tr>
               <tr className='hover'>
                 <td>Invalidez y Vida Patrón</td>
                 <td></td>
-                <td>{info.EMIP_IMP_INV_VIDA}</td>
+                <td>${info.EMIP_IMP_INV_VIDA}</td>
               </tr>
               <tr className='hover'>
                 <td>Invalidez y Vida Obr</td>
                 <td></td>
-                <td>{info.EMIP_IMP_INV_VIDA_O}</td>
+                <td>${info.EMIP_IMP_INV_VIDA_O}</td>
               </tr>
               <tr className='hover'>
                 <td>Guarderías y prestaciones sociales</td>
                 <td></td>
-                <td>{info.EMIP_IMP_GUAR}</td>
+                <td>${info.EMIP_IMP_GUAR}</td>
               </tr>
               <tr className='hover'>
                 <td>SUB TOTAL</td>
                 <td></td>
-                <td>{info.SUBTOTAL_IMSS}</td>
+                <td>${info.SUBTOTAL_IMSS}</td>
               </tr>
 
               <tr>
@@ -132,22 +132,22 @@ const TableResumenEmision = ({ info }) => {
               <tr className='hover'>
                 <td>Retiro</td>
                 <td></td>
-                <td>{info.EBIP_IMP_RETIRO}</td>
+                <td>${info.EBIP_IMP_RETIRO}</td>
               </tr>
               <tr className='hover'>
                 <td>Cesantía y Vejez Patrón</td>
                 <td></td>
-                <td>{info.EBIP_IMP_CYV}</td>
+                <td>${info.EBIP_IMP_CYV}</td>
               </tr>
               <tr className='hover'>
                 <td>Cesantía y Vejez Obr</td>
                 <td></td>
-                <td>{info.EBIP_IMP_CYV_O}</td>
+                <td>${info.EBIP_IMP_CYV_O}</td>
               </tr>
               <tr className='hover'>
                 <td>SUB TOTAL</td>
                 <td></td>
-                <td>{info.EBIP_SUMA}</td>
+                <td>${info.EBIP_SUMA}</td>
               </tr>
 
               <tr>
@@ -156,17 +156,17 @@ const TableResumenEmision = ({ info }) => {
               <tr className='hover'>
                 <td>Aportación Patronal</td>
                 <td></td>
-                <td>{info.EBIP_IMPOR_INFO}</td>
+                <td>${info.EBIP_IMPOR_INFO}</td>
               </tr>
               <tr className='hover'>
                 <td>Amortización</td>
                 <td></td>
-                <td>{info.EBIP_IMPOR_AMOR}</td>
+                <td>${info.EBIP_IMPOR_AMOR}</td>
               </tr>
               <tr className='hover'>
                 <td>SUB TOTAL</td>
                 <td></td>
-                <td>{info.EBIP_SUMA_INFO}</td>
+                <td>${info.EBIP_SUMA_INFO}</td>
               </tr>
 
               <tr>

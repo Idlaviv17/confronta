@@ -58,7 +58,7 @@ const TablePagoMensualSua = React.forwardRef(({ info, filter }, ref) => {
                   <span className='font-medium hover:font-bold'>Actividad :</span> {header.ACTECO} 
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Mes y Año del Proceso :</span> {`${header.MES}/${header.ANO}`}
+                  <span className='font-medium hover:font-bold'>Mes y Año del Proceso :</span> {`${header.MES} / ${header.ANO}`}
                 </td>
               </tr>
             </tbody>
@@ -137,7 +137,7 @@ const TablePagoMensualSua = React.forwardRef(({ info, filter }, ref) => {
                   <span className='font-medium hover:font-bold'>Número de trabajadores :</span> {footer.TOTAL_COTIZANTES} 
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'> Prestaciones en Dinero :</span> {footer.CT_PD}
+                  <span className='font-medium hover:font-bold'> Prestaciones en Dinero :</span> ${footer.CT_PD}
                 </td>
               </tr>
               <tr>
@@ -145,7 +145,7 @@ const TablePagoMensualSua = React.forwardRef(({ info, filter }, ref) => {
                   <span className='font-medium hover:font-bold'>Número de días cotizados :</span> {footer.RTOTAL0} 
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Gastos Médicos Pensionados :</span> {footer.CT_GMP}
+                  <span className='font-medium hover:font-bold'>Gastos Médicos Pensionados :</span> ${footer.CT_GMP}
                 </td>
               </tr>
               <tr>
@@ -153,7 +153,7 @@ const TablePagoMensualSua = React.forwardRef(({ info, filter }, ref) => {
                   <span className='font-medium hover:font-bold'>Número de Incapacidades :</span> {footer.INCAPACIDADES}
                 </td>
                 <td>
-                <span className='font-medium hover:font-bold'>Riesgos de Trabajos :</span> {footer.CT_RT}
+                <span className='font-medium hover:font-bold'>Riesgos de Trabajos :</span> ${footer.CT_RT}
                 </td>
               </tr>
               <tr>
@@ -161,23 +161,23 @@ const TablePagoMensualSua = React.forwardRef(({ info, filter }, ref) => {
                 <span className='font-medium hover:font-bold'>Número de Ausentismos :</span> {footer.AUSENTISMOS}
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Invalidez y Vida :</span> {footer.CT_IYV}
+                  <span className='font-medium hover:font-bold'>Invalidez y Vida :</span> ${footer.CT_IYV}
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span className='font-medium hover:font-bold'>Cuota Fija :</span> {footer.CT_EYM} 
+                  <span className='font-medium hover:font-bold'>Cuota Fija :</span> ${footer.CT_EYM} 
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Guarderías y Prestaciones Sociales :</span> {footer.CT_GPS}
+                  <span className='font-medium hover:font-bold'>Guarderías y Prestaciones Sociales :</span> ${footer.CT_GPS}
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span className='font-medium hover:font-bold'>Excedente 3 SMGDF :</span> {footer.CT_EXCEDE} 
+                  <span className='font-medium hover:font-bold'>Excedente 3 SMGDF :</span> ${footer.CT_EXCEDE} 
                 </td>
                 <td>
-                  <span className='font-medium hover:font-bold'>Total Periodo :</span> {footer.SUBTOTAL_SEG}
+                  <span className='font-medium hover:font-bold'>Total Periodo :</span> ${footer.SUBTOTAL_SEG}
                 </td>
               </tr>
             </tbody>
