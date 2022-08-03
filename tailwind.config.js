@@ -9,7 +9,7 @@ module.exports = {
   plugins: [require("daisyui")],
   daisyui: {
     styled: true,
-    themes: ["winter"],
+    themes: ["winter"], // Theme to use in the entire application
     base: true,
     utils: true,
     logs: true,

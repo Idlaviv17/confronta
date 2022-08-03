@@ -3,6 +3,8 @@ import FileUploadEmiMensual from '../../components/FileUploadEmiMensual'
 import TopBar from '../../components/TopBar'
 
 const EmisionPage = () => {
+
+  // Button information to pass to the TopBar component
   const topBarBtns = [
     {
       name: 'Leer Disco',

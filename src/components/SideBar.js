@@ -4,7 +4,7 @@ import { BsFileEarmarkPerson } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 
 const SideBar = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate() // Used to change the current route 
 
   return (
     <div className='sidebar'>
@@ -15,15 +15,15 @@ const SideBar = () => {
       </div>
       <ul className='menu w-56 p-2 rounded-box bg-gray-50'>
         <li>
-          <a onClick={() => navigate('/nrp')}>
+          <a onClick={() => navigate('/nrp')}> {/* Navigate to the NRP section */}
             <BsFileEarmarkPerson className='h-5 w-5' />
             Registros Patronales
           </a>
-          <a onClick={() => navigate('/sua')}>
+          <a onClick={() => navigate('/sua')}> {/* Navigate to the SUA section */}
             <FaRegSave className='h-5 w-5' />
             Disco de Pago
           </a>
-          <a onClick={() => navigate('/emision')}>
+          <a onClick={() => navigate('/emision')}> {/* Navigate to the Emission section */}
             <MdCorporateFare className='h-5 w-5' />
             Emisión IDSE
           </a>

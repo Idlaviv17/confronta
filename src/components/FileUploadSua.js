@@ -6,13 +6,15 @@ import { HiOutlineUpload } from 'react-icons/hi'
 import { FcCheckmark } from 'react-icons/fc'
 
 const FileUploadSua = () => {
-  const [txt, setTxt] = useState('')
-  const [mdb, setMdb] = useState('')
+  const [txt, setTxt] = useState('') // Sua txt file info
+  const [mdb, setMdb] = useState('') // Sua mdb file info
 
+  // On change of txt handler
   const onChangeTxt = e => {
     setTxt(e.target.files[0])
   }
 
+  // On change of mdb handler
   const onChangeMdb = e => {
     setMdb(e.target.files[0])
   }
@@ -20,6 +22,7 @@ const FileUploadSua = () => {
   const onSubmit = e => {
     e.preventDefault()
 
+    // Makes sure to upload both files at the same time
     if (txt === '' || mdb === '') {
       alert(
         'Debe de subir los dos archivos de SUA (.txt y .mdb) para poder subir la información'
@@ -27,6 +30,7 @@ const FileUploadSua = () => {
       return
     }
 
+    // Sends data to the server (asynchronously)
     const send = async (txtData, mdbData) => {
       try {
         await axios.post('/api/sua', { txtData, mdbData })
@@ -37,18 +41,18 @@ const FileUploadSua = () => {
       }
     }
 
-    const txtReader = new FileReader()
-    txtReader.readAsText(txt)
-    txtReader.onload = e => {
+    const txtReader = new FileReader() // Declares a FileReader object to access info (buffer)
+    txtReader.readAsText(txt) // Reads the buffer as text (UTF-8)
+    txtReader.onload = e => { // Calls the onload callback to proccess the data along with the mdb file (asynchronously)
       const txtData = txtReader.result
-      if (txtData) {
-        const mdbReader = new FileReader()
+      if (txtData) { // Checks if it is not falsy (null or undefined)
+        const mdbReader = new FileReader() // Declares another FileReader for the mdb file
         mdbReader.readAsArrayBuffer(mdb)
-        mdbReader.onload = () => {
-          const buffer = arrayBufferToBuffer(mdbReader.result)
-          const db = new AccessParser(Buffer.from(buffer, 'utf-8'))
+        mdbReader.onload = () => { // Calls onload callback to process further data (asynchronously)
+          const buffer = arrayBufferToBuffer(mdbReader.result) // Comverts array to buffer
+          const db = new AccessParser(Buffer.from(buffer, 'utf-8')) // The Parser reads the buffer (UTF-8 encoded)
           const table = db.parseTable('Movtos')
-          const mdbData = table.lines.filter(
+          const mdbData = table.lines.filter( // Only takes necessary data
             elem =>
               elem[13] === '15' ||
               elem[13] === '17' ||
@@ -56,6 +60,8 @@ const FileUploadSua = () => {
               elem[13] === '19' ||
               elem[13] === '20'
           )
+
+          // Displays a message with a summary of the info contained in the files to the user
           const ANO = parseInt(txtData.slice(26, 30))
           const MES = txtData.slice(30, 32).trim()
           const REGPATRON = txtData.slice(2, 13).trim()
@@ -63,6 +69,7 @@ const FileUploadSua = () => {
             `ARCHIVO: SUA\nAÑO: ${ANO}\nMES: ${MES}\nREGPATRON: ${REGPATRON}`
           )
 
+          // Sends the data and resets state
           send(txtData, mdbData)
           setTxt('')
           setMdb('')
@@ -91,7 +98,7 @@ const FileUploadSua = () => {
               id='customFile'
               onChange={onChangeTxt}
             />
-            {txt !== '' && <FcCheckmark />}
+            {txt !== '' && <FcCheckmark />} {/* If loaded display checkmark */}
           </label>
 
           <label
@@ -106,7 +113,7 @@ const FileUploadSua = () => {
               id='customFile'
               onChange={onChangeMdb}
             />
-            {mdb !== '' && <FcCheckmark />}
+            {mdb !== '' && <FcCheckmark />} {/* If loaded display checkmark */}
           </label>
 
           <input

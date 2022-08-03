@@ -1,16 +1,15 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactToPrint from 'react-to-print'
 import axios from 'axios'
 import TopBar from '../../components/TopBar'
 import TableResumenEmision from '../../components/TableResumenEmision'
 
 const EmisionResumen = () => {
-  const tableRef = useRef()
-
-  const [info, setInfo] = useState({})
-  const [loading, setLoading] = useState(true)
+  const [info, setInfo] = useState({}) // Information retrieved from the API
+  const [loading, setLoading] = useState(true) // Conditional to display a message while loading
 
   useEffect(() => {
+    // Fetches specific data from the API and updates state
     const fetchData = async () => {
       const ANO = 2019
       const MES = '11'
@@ -29,6 +28,7 @@ const EmisionResumen = () => {
     fetchData()
   }, [])
 
+  // Button information to pass to the TopBar component
   const topBarBtns = [
     {
       name: 'Leer Disco',
@@ -50,16 +50,21 @@ const EmisionResumen = () => {
 
   return (
     <div>
+      {/* TopBar */}
       <TopBar btns={topBarBtns} />
+
+      {/* Print PDF button (needs ref) */}
       <ReactToPrint
         trigger={() => <button className='print-btn'>Imprimir PDF</button>}
         content={() => tableRef.current}
       />
+
+      {/* Main content (report) */}
       <div className='content'>
         {loading ? (
-          <h1 className='text-center'>Cargando...</h1>
+          <h1 className='text-center'>Cargando...</h1> // Displays message if information is not yet available
         ) : (
-          <TableResumenEmision info={info} ref={tableRef} />
+          <TableResumenEmision info={info} />
         )}
       </div>
     </div>

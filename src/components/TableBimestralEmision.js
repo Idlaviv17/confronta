@@ -1,6 +1,8 @@
 import React from 'react'
 import TableCuotaEmiBimestral from "./TableCuotaEmiBimestral"
 
+// The component needs React.forwardRef() in order for the pdf converter to work
+
 const TableBimestralEmision = React.forwardRef(({ info, filter }, ref) => {
   const header = info.header
   const body = info.body
@@ -88,9 +90,9 @@ const TableBimestralEmision = React.forwardRef(({ info, filter }, ref) => {
         <div className='overflow-x-auto mt-4'>
           {
             filter === '' 
-            ? body.map((cuota) => <TableCuotaEmiBimestral key={cuota.EBIA_NUMAFIL} cuota={cuota} />)
+            ? body.map((cuota) => <TableCuotaEmiBimestral key={cuota.EBIA_NUMAFIL} cuota={cuota} />) // If the filter is empty, displays everything
             : body
-              .filter(cuota => 
+              .filter(cuota => // If the filter is not empty, filters the info by social security number or by name
                 cuota.EBIA_NOM_TRAB.toLowerCase().includes(filter.toLowerCase()) 
                 || cuota.EBIA_NUMAFIL.toLowerCase().includes(filter.toLowerCase()) )
               .map((cuota) => <TableCuotaEmiBimestral key={cuota.EBIA_NUMAFIL} cuota={cuota} />)

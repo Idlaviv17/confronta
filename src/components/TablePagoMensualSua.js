@@ -1,6 +1,7 @@
 import React from 'react'
 import TableCuotaMensual from './TableCuotaMensual'
 
+// The component needs React.forwardRef() in order for the pdf converter to work
 const TablePagoMensualSua = React.forwardRef(({ info, filter }, ref) => {
   const header = info.header
   const body = info.body
@@ -114,9 +115,9 @@ const TablePagoMensualSua = React.forwardRef(({ info, filter }, ref) => {
         <div className='overflow-x-auto mt-4'>
           { 
             filter === '' 
-            ? body.map((cuota) => <TableCuotaMensual key={cuota.NUMAFIL} cuota={cuota} />)
+            ? body.map((cuota) => <TableCuotaMensual key={cuota.NUMAFIL} cuota={cuota} />) // If the filter is empty, displays everything
             : body
-              .filter(cuota => 
+              .filter(cuota => // If the filter is not empty, filters the info by social security number or by name
                 cuota.NOMBRE.toLowerCase().includes(filter.toLowerCase()) 
                 || cuota.NUMAFIL.toLowerCase().includes(filter.toLowerCase()) )
               .map((cuota) => <TableCuotaMensual key={cuota.NUMAFIL} cuota={cuota} />)

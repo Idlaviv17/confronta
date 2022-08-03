@@ -5,15 +5,16 @@ import { HiOutlineUpload } from 'react-icons/hi'
 import { FcCheckmark } from 'react-icons/fc'
 
 const FileUploadEmiBimestral = () => {
-  const [file, setFile] = useState('')
+  const [file, setFile] = useState('') // Bimonthly data file
 
-  const onChange = e => {
+  const onChange = e => { // On change file handler
     setFile(e.target.files[0])
   }
 
   const onSubmit = e => {
     e.preventDefault()
 
+    // Sends data to the server
     const send = async data => {
       try {
         await axios.post('/api/emi/bimestral', { data: data })
@@ -26,7 +27,9 @@ const FileUploadEmiBimestral = () => {
 
     const loadZipFiles = async file => {
       const zip = new JSZip()
-      const zipFile = await zip.loadAsync(file)
+      const zipFile = await zip.loadAsync(file) // Loads the file into the zip buffer
+      
+      // Retrieves data depending on the files' names
       const data = [
         {
           title: 'CDEBAS',
@@ -48,6 +51,7 @@ const FileUploadEmiBimestral = () => {
         },
       ]
 
+      // Shows a message to the user about the data the files contain
       const ANO = parseInt(data[2].content.slice(95, 99))
       const MES = data[2].content.slice(93, 95).trim()
       const REGPATRON = data[2].content.slice(21, 32).trim()
@@ -58,7 +62,7 @@ const FileUploadEmiBimestral = () => {
       send(data)
     }
 
-    if (file.name.includes('.zip')) {
+    if (file.name.includes('.zip')) { // Checks if it's a zip file
       loadZipFiles(file)
     } else {
       alert('Inserte un archivo .zip')
@@ -86,7 +90,7 @@ const FileUploadEmiBimestral = () => {
               id='customFile'
               onChange={onChange}
             />
-            {file !== '' && <FcCheckmark />}
+            {file !== '' && <FcCheckmark />} {/* If loaded display checkmark */}
           </label>
 
           <input

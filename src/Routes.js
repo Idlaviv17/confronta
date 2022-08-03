@@ -14,16 +14,16 @@ import EmisionPagoBimestral from './pages/Emision/EmisionPagoBimestral'
 const RoutesSwitch = () => {
   return (
       <Routes>
-        <Route exact path='/' element={<HomePage />} />
-        <Route exact path='/nrp' element={<RegPatPage />} />
-        <Route exact path='/sua' element={<SuaPage />} />
-        <Route exact path='/sua/resumen' element={<SuaResumen />} />
-        <Route exact path='/sua/mensual' element={<SuaPagoMensual />} />
-        <Route exact path='/sua/bimestral' element={<SuaPagoBimestral />} />
-        <Route exact path='/emision' element={<EmisionPage />} />
-        <Route exact path='/emision/resumen' element={<EmisionResumen />} />
-        <Route exact path='/emision/mensual' element={<EmisionPagoMensual />} />
-        <Route exact path='/emision/bimestral' element={<EmisionPagoBimestral />} />
+        <Route exact path='/' element={<HomePage />} /> {/* Main page */}
+        <Route exact path='/nrp' element={<RegPatPage />} /> {/* NRP listing */}
+        <Route exact path='/sua' element={<SuaPage />} /> {/* SUA upload */}
+        <Route exact path='/sua/resumen' element={<SuaResumen />} /> {/* SUA summary */}
+        <Route exact path='/sua/mensual' element={<SuaPagoMensual />} /> {/* SUA monthly report */}
+        <Route exact path='/sua/bimestral' element={<SuaPagoBimestral />} /> {/* SUA bimonthly report */}
+        <Route exact path='/emision' element={<EmisionPage />} /> {/* Emission upload */}
+        <Route exact path='/emision/resumen' element={<EmisionResumen />} /> {/* Emission summary */}
+        <Route exact path='/emision/mensual' element={<EmisionPagoMensual />} /> {/* Emission monthly report */}
+        <Route exact path='/emision/bimestral' element={<EmisionPagoBimestral />} /> {/* Emission bimonthly report */}
       </Routes>
   )
 }

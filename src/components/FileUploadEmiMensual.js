@@ -7,10 +7,10 @@ import { HiOutlineUpload } from 'react-icons/hi'
 import { FcCheckmark } from 'react-icons/fc'
 
 const FileUploadEmiMensual = () => {
-  const [file, setFile] = useState('')
-  const [bimestral, setBimestral] = useState(false)
+  const [file, setFile] = useState('') // Monthly data file
+  const [bimestral, setBimestral] = useState(false) // Conditional to display a second upload option (bimonthly)
 
-  const onChange = e => {
+  const onChange = e => { // On change file handler
     setFile(e.target.files[0])
   }
 
@@ -19,7 +19,9 @@ const FileUploadEmiMensual = () => {
 
     const loadZipFiles = async file => {
       const zip = new JSZip()
-      const zipFile = await zip.loadAsync(file)
+      const zipFile = await zip.loadAsync(file) // Loads the file into the zip buffer
+      
+      // Retrieves data depending on the files' names
       const data = [
         {
           title: 'CDEMAS',
@@ -41,6 +43,7 @@ const FileUploadEmiMensual = () => {
         },
       ]
 
+      // Shows a message to the user about the data the files contain
       const ANO = parseInt(data[2].content.slice(97, 101))
       const MES = data[2].content.slice(95, 97).trim()
       const REGPATRON = data[2].content.slice(23, 34).trim()
@@ -48,8 +51,10 @@ const FileUploadEmiMensual = () => {
         `ARCHIVO: EMISIÓN\nAÑO: ${ANO}\nMES: ${MES}\nREGPATRON: ${REGPATRON}`
       )
 
+      // If the file has a bimonthly date, it enables its upload conditional
       if (MES % 2 === 0) setBimestral(true)
 
+      // Sends the data to the server
       try {
         await axios.post('/api/emi/mensual', { data: data })
         alert('El archivo se ha enviado')
@@ -61,13 +66,14 @@ const FileUploadEmiMensual = () => {
 
     const loadXLSX = async file => {
       const reader = new FileReader()
-      reader.readAsBinaryString(file)
+      reader.readAsBinaryString(file) // The xls file is read as a binary string, since it comes encoded
       reader.onload = async e => {
         const data = reader.result
-        const workbook = XLSX.read(data, {
+        const workbook = XLSX.read(data, { // Read the workbook decoding it
           type: 'binary',
         })
 
+        // Converts all the worksheets to json
         let worksheets = {}
         for (const sheetName of workbook.SheetNames) {
           worksheets[sheetName] = XLSX.utils.sheet_to_json(
@@ -75,10 +81,11 @@ const FileUploadEmiMensual = () => {
           )
         }
 
-        if (worksheets) {
+        if (worksheets) { // Only executes when the worksheets are ready
           const emiSheets = Object.keys(worksheets)
           const CDEBPA = worksheets[emiSheets[0]]
 
+          // Shows a message to the user about the data the files contain
           const ANO = parseInt(CDEBPA[2].__EMPTY_1.slice(2, 6))
           const MES = CDEBPA[2].__EMPTY_1.slice(0, 1).trim()
           const REGPATRON = CDEBPA[3].__EMPTY_1.trim()
@@ -86,6 +93,7 @@ const FileUploadEmiMensual = () => {
             `ARCHIVO: EMISIÓN\nAÑO: ${ANO}\nMES: ${MES}\nREGPATRON: ${REGPATRON}`
           )
 
+          // Sends data to the bimonthly API route
           if (Object.keys(worksheets).length === 3) {
             try {
               await axios.post('/api/emi/bimestral', worksheets)
@@ -95,6 +103,8 @@ const FileUploadEmiMensual = () => {
               alert('Existe un problema al enviar el archivo')
             }
           }
+
+          // Sends data to the monthly API route
           try {
             await axios.post('/api/emi/mensual', worksheets)
             alert('El archivo se ha enviado')
@@ -107,9 +117,9 @@ const FileUploadEmiMensual = () => {
     }
 
     if (file.name.includes('.zip')) {
-      loadZipFiles(file)
+      loadZipFiles(file) // Executes if it's a zip file
     } else {
-      loadXLSX(file)
+      loadXLSX(file) // Executes if it's a xsl file
     }
 
     setFile('')
@@ -135,7 +145,7 @@ const FileUploadEmiMensual = () => {
               id='customFile'
               onChange={onChange}
             />
-            {file !== '' && <FcCheckmark />}
+            {file !== '' && <FcCheckmark />} {/* If loaded display checkmark */}
           </label>
 
           <input
@@ -146,7 +156,7 @@ const FileUploadEmiMensual = () => {
         </form>
 
         {bimestral && (
-            <FileUploadEmiBimestral />
+            <FileUploadEmiBimestral /> // If true displays the bimonthly upload option
         )}
       </div>
     </div>

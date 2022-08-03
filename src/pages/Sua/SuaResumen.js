@@ -5,12 +5,13 @@ import TopBar from '../../components/TopBar'
 import TableResumenSua from '../../components/TableResumenSua'
 
 const SuaResumen = () => {
-  const tableRef = useRef()
+  const tableRef = useRef() // Reference to the report's table
 
-  const [info, setInfo] = useState({})
-  const [loading, setLoading] = useState(true)
+  const [info, setInfo] = useState({}) // Information retrieved from the API
+  const [loading, setLoading] = useState(true) // Conditional to display a message while loading
 
   useEffect(() => {
+    // Fetches specific data from the API and updates state
     const fetchData = async () => {
       const ANO = 2020
       const MES = '12'
@@ -29,6 +30,7 @@ const SuaResumen = () => {
     fetchData()
   }, [])
 
+  // Button information to pass to the TopBar component
   const topBarBtns = [
     {
       name: 'Leer Disco',
@@ -50,14 +52,19 @@ const SuaResumen = () => {
 
   return (
     <div>
+      {/* TopBar */}
       <TopBar btns={topBarBtns} />
+
+      {/* Print PDF button (needs ref) */}
       <ReactToPrint
         trigger={() => <button className='print-btn'>Imprimir PDF</button>}
         content={() => tableRef.current}
       />
+
+      {/* Main content (report) */}
       <div className='content'>
         {loading ? (
-          <h1 className='text-center'>Cargando...</h1>
+          <h1 className='text-center'>Cargando...</h1> // Displays message if information is not yet available
         ) : (
           <TableResumenSua info={info} ref={tableRef} />
         )}

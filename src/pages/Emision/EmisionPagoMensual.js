@@ -5,13 +5,14 @@ import TopBar from '../../components/TopBar'
 import TableMensualEmision from '../../components/TableMensualEmision'
 
 const EmisionPagoMensual = () => {
-  const tableRef = useRef()
+  const tableRef = useRef() // Reference to the report's table
 
-  const [info, setInfo] = useState({})
-  const [loading, setLoading] = useState(true)
-  const [filter, setFilter] = useState('')
+  const [info, setInfo] = useState({}) // Information retrieved from the API
+  const [loading, setLoading] = useState(true) // Conditional to display a message while loading
+  const [filter, setFilter] = useState('') // Value in which to filter the report's data
 
   useEffect(() => {
+    // Fetches specific data from the API and updates state
     const fetchData = async () => {
       const ANO = 2020
       const MES = '12'
@@ -30,6 +31,7 @@ const EmisionPagoMensual = () => {
     fetchData()
   }, [])
 
+  // Button information to pass to the TopBar component
   const topBarBtns = [
     {
       name: 'Leer Disco',
@@ -49,17 +51,23 @@ const EmisionPagoMensual = () => {
     },
   ]
 
+  // Changes in the filter value handler
   const handleFilterChange = e => {
     setFilter(e.target.value)
   }
 
   return (
     <div>
+      {/* TopBar */}
       <TopBar btns={topBarBtns} />
+
+      {/* Print PDF button (needs ref) */}
       <ReactToPrint
         trigger={() => <button className='print-btn'>Imprimir PDF</button>}
         content={() => tableRef.current}
       />
+
+      {/* Filter Text Field */}
       <div className='filter'>
         <input
           type='text'
@@ -68,9 +76,11 @@ const EmisionPagoMensual = () => {
           onChange={handleFilterChange}
         />
       </div>
+
+      {/* Main content (report) */}
       <div className='content'>
         {loading ? (
-          <h1 className='text-center'>Cargando...</h1>
+          <h1 className='text-center'>Cargando...</h1> // Displays message if information is not yet available
         ) : (
           <TableMensualEmision info={info} filter={filter} ref={tableRef} />
         )}

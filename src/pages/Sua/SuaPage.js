@@ -3,6 +3,8 @@ import FileUploadSua from '../../components/FileUploadSua'
 import TopBar from '../../components/TopBar'
 
 const SuaPage = () => {
+
+  // Button information to pass to the TopBar component
   const topBarBtns = [
     {
       name: 'Leer Disco',
