@@ -64,11 +64,15 @@ const TableMensualEmision = React.forwardRef(({ info, filter }, ref) => {
                 <th></th>
                 <th></th>
                 <th></th>
-                <th>ExcPat</th>
-                <th>PD Pat</th>
-                <th>GMP Pat</th>
                 <th></th>
-                <th>IV Pat</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
                 <th></th>
                 <th></th>
               </tr>
@@ -78,10 +82,14 @@ const TableMensualEmision = React.forwardRef(({ info, filter }, ref) => {
                 <th>Días</th>
                 <th>SDI</th>
                 <th>C.F.</th>
+                <th>ExcPat</th>
                 <th>Exc.Obr</th>
+                <th>PD Pat</th>
                 <th>PD Obr</th>
+                <th>GMP Pat</th>
                 <th>GMP Obr</th>
                 <th>R.T.</th>
+                <th>IV Pat</th>
                 <th>IV Obr</th>
                 <th>G.P.S</th>
                 <th>Suma</th>

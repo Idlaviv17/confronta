@@ -10,11 +10,15 @@ const TableCuotaEmiMensual = ({ cuota }) => {
           <td></td>
           <td></td>
           <td></td>
-          <td>{cuota.EMIM_IMP_EYM_EXCE}</td>
-          <td>{cuota.EMIM_IMP_EYM_PRES}</td>
-          <td>{cuota.EMIM_IMP_EYM_ESPE}</td>
           <td></td>
-          <td>{cuota.EMIM_IMP_IV}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
           <td></td>
           <td></td>
         </tr>
