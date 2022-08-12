@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react'
 import ReactToPrint from 'react-to-print'
-import axios from 'axios'
-import TopBar from '../../components/TopBar'
-import TablePagoBimestralSua from '../../components/TablePagoBimestralSua'
+import axios from '../api/axios'
+import TopBar from '../components/TopBar'
+import TablePagoBimestralSua from '../components/TablePagoBimestralSua'
 
 const SuaPagoBimestral = () => {
   const tableRef = useRef() // Reference to the report's table

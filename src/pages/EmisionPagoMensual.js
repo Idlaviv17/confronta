@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import ReactToPrint from 'react-to-print'
-import axios from 'axios'
-import TopBar from '../../components/TopBar'
-import TableBimestralEmision from '../../components/TableBimestralEmision'
+import axios from '../api/axios'
+import TopBar from '../components/TopBar'
+import TableMensualEmision from '../components/TableMensualEmision'
 
-const EmisionPagoBimestral = () => {
+const EmisionPagoMensual = () => {
   const tableRef = useRef() // Reference to the report's table
 
   const [info, setInfo] = useState({}) // Information retrieved from the API
@@ -18,13 +18,13 @@ const EmisionPagoBimestral = () => {
       const MES = '04'
       const REGPATRON = 'E6030587100'
       try {
-        const res = await axios.get('/api/emi/bimestral/pago', {
+        const res = await axios.get('/api/emi/mensual/pago', {
           params: { ANO, MES, REGPATRON },
         })
         setInfo(res.data)
         setLoading(false)
       } catch (err) {
-        alert('Existe un problema al leer el reporte bimestral')
+        alert('Existe un problema al leer el reporte mensual')
       }
     }
 
@@ -34,7 +34,7 @@ const EmisionPagoBimestral = () => {
   // Button information to pass to the TopBar component
   const topBarBtns = [
     {
-      name: 'Leer Disco',
+      name: 'Leer Emisión',
       to: '/emision',
     },
     {
@@ -42,11 +42,11 @@ const EmisionPagoBimestral = () => {
       to: '/emision/resumen',
     },
     {
-      name: 'Pago Mensual',
+      name: 'Emisión Mensual',
       to: '/emision/mensual',
     },
     {
-      name: 'Pago Bimestral',
+      name: 'Emisión Bimestral',
       to: '/emision/bimestral',
     },
   ]
@@ -82,11 +82,11 @@ const EmisionPagoBimestral = () => {
         {loading ? (
           <h1 className='text-center'>Cargando...</h1> // Displays message if information is not yet available
         ) : (
-          <TableBimestralEmision info={info} filter={filter} ref={tableRef} />
+          <TableMensualEmision info={info} filter={filter} ref={tableRef} />
         )}
       </div>
     </div>
   )
 }
 
-export default EmisionPagoBimestral
+export default EmisionPagoMensual

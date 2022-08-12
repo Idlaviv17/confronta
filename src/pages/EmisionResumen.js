@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import TopBar from '../../components/TopBar'
-import TableResumenEmision from '../../components/TableResumenEmision'
+import axios from '../api/axios'
+import TopBar from '../components/TopBar'
+import TableResumenEmision from '../components/TableResumenEmision'
 
 const EmisionResumen = () => {
   const [info, setInfo] = useState({}) // Information retrieved from the API
@@ -30,7 +30,7 @@ const EmisionResumen = () => {
   // Button information to pass to the TopBar component
   const topBarBtns = [
     {
-      name: 'Leer Disco',
+      name: 'Leer Emisión',
       to: '/emision',
     },
     {
@@ -38,11 +38,11 @@ const EmisionResumen = () => {
       to: '/emision/resumen',
     },
     {
-      name: 'Pago Mensual',
+      name: 'Emisión Mensual',
       to: '/emision/mensual',
     },
     {
-      name: 'Pago Bimestral',
+      name: 'Emisión Bimestral',
       to: '/emision/bimestral',
     },
   ]

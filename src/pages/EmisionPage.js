@@ -1,13 +1,13 @@
 import React from 'react'
-import FileUploadEmiMensual from '../../components/FileUploadEmiMensual'
-import TopBar from '../../components/TopBar'
+import FileUploadEmiMensual from '../components/FileUploadEmiMensual'
+import TopBar from '../components/TopBar'
 
 const EmisionPage = () => {
 
   // Button information to pass to the TopBar component
   const topBarBtns = [
     {
-      name: 'Leer Disco',
+      name: 'Leer Emisión',
       to: '/emision',
     },
     {
@@ -15,11 +15,11 @@ const EmisionPage = () => {
       to: '/emision/resumen',
     },
     {
-      name: 'Pago Mensual',
+      name: 'Emisión Mensual',
       to: '/emision/mensual',
     },
     {
-      name: 'Pago Bimestral',
+      name: 'Emisión Bimestral',
       to: '/emision/bimestral',
     },
   ]

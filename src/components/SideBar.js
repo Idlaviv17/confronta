@@ -1,10 +1,18 @@
 import { FaRegSave } from 'react-icons/fa'
 import { MdCorporateFare } from 'react-icons/md'
 import { BsFileEarmarkPerson } from 'react-icons/bs'
+import { BiLogOut } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
+import useLogout from "../hooks/useLogout"
 
 const SideBar = () => {
   const navigate = useNavigate() // Used to change the current route 
+  const logout = useLogout() // Logout hook
+
+  const signOut = async () => { // Logout handler
+    await logout()
+    navigate('/')
+  }
 
   return (
     <div className='sidebar'>
@@ -26,6 +34,10 @@ const SideBar = () => {
           <a onClick={() => navigate('/emision')}> {/* Navigate to the Emission section */}
             <MdCorporateFare className='h-5 w-5' />
             Emisión IDSE
+          </a>
+          <a className='fixed bottom-2' onClick={signOut}> {/* Logout of the app */}
+            <BiLogOut className='h-5 w-5' />
+            Cerrar Sesión
           </a>
         </li>
       </ul>

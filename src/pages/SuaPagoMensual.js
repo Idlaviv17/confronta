@@ -1,14 +1,15 @@
 import React, { useEffect, useState, useRef } from 'react'
 import ReactToPrint from 'react-to-print'
-import axios from 'axios'
-import TopBar from '../../components/TopBar'
-import TableResumenSua from '../../components/TableResumenSua'
+import axios from '../api/axios'
+import TopBar from '../components/TopBar'
+import TablePagoMensualSua from '../components/TablePagoMensualSua'
 
-const SuaResumen = () => {
+const SuaPagoMensual = () => {
   const tableRef = useRef() // Reference to the report's table
 
   const [info, setInfo] = useState({}) // Information retrieved from the API
   const [loading, setLoading] = useState(true) // Conditional to display a message while loading
+  const [filter, setFilter] = useState('') // Value in which to filter the report's data
 
   useEffect(() => {
     // Fetches specific data from the API and updates state
@@ -17,13 +18,13 @@ const SuaResumen = () => {
       const MES = '04'
       const REGPATRON = 'E6030587100'
       try {
-        const res = await axios.get('/api/sua/resumen', {
+        const res = await axios.get('/api/sua/mensual', {
           params: { ANO, MES, REGPATRON },
         })
         setInfo(res.data)
         setLoading(false)
       } catch (err) {
-        alert('Existe un problema al leer el resumen')
+        alert('Existe un problema al leer el pago mensual')
       }
     }
 
@@ -50,6 +51,11 @@ const SuaResumen = () => {
     },
   ]
 
+  // Changes in the filter value handler
+  const handleFilterChange = e => {
+    setFilter(e.target.value)
+  }
+
   return (
     <div>
       {/* TopBar */}
@@ -61,16 +67,26 @@ const SuaResumen = () => {
         content={() => tableRef.current}
       />
 
+      {/* Filter Text Field */}
+      <div className='filter'>
+        <input
+          type='text'
+          placeholder='Filtrar...'
+          className='input input-bordered w-full max-w-xs'
+          onChange={handleFilterChange}
+        />
+      </div>
+
       {/* Main content (report) */}
       <div className='content'>
         {loading ? (
           <h1 className='text-center'>Cargando...</h1> // Displays message if information is not yet available
         ) : (
-          <TableResumenSua info={info} ref={tableRef} />
+          <TablePagoMensualSua info={info} filter={filter} ref={tableRef} />
         )}
       </div>
     </div>
   )
 }
 
-export default SuaResumen
+export default SuaPagoMensual

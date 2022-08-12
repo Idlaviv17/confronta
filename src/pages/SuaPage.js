@@ -1,6 +1,6 @@
 import React from 'react'
-import FileUploadSua from '../../components/FileUploadSua'
-import TopBar from '../../components/TopBar'
+import FileUploadSua from '../components/FileUploadSua'
+import TopBar from '../components/TopBar'
 
 const SuaPage = () => {
 

@@ -10,29 +10,28 @@
 }
 
 @layer components {
-  
   .sidebar {
-    @apply fixed top-0 left-0 h-screen flex flex-col shadow-lg bg-gray-50
+    @apply fixed top-0 left-0 h-screen flex flex-col shadow-lg bg-gray-50;
   }
 
   .main-container {
     margin-left: 224px;
-    @apply h-full w-full ml-[224px]
+    @apply h-full w-full ml-[224px];
   }
 
   .top-bar {
     z-index: 99999998;
-    @apply fixed navbar w-screen bg-gray-50 mb-[48px] top-0 
+    @apply fixed navbar w-screen bg-gray-50 mb-[48px] top-0;
   }
 
   .print-btn {
     z-index: 99999999;
-    @apply btn btn-primary fixed top-2 right-2 text-white
+    @apply btn btn-primary fixed top-2 right-2 text-white;
   }
 
   .filter {
     z-index: 99999999;
-    @apply form-control fixed top-2 right-[145px] rounded
+    @apply form-control fixed top-2 right-[145px] rounded;
   }
 
   /* Makes some objects to stop overlapping */
@@ -41,7 +40,17 @@
   }
 
   .content {
-    @apply mt-[100px] m-5
+    @apply mt-[100px] m-5;
+  }
+
+  .offscreen {
+    position: absolute;
+    left: -9999px;
+  }
+
+  .login-input {
+    @apply appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 
+    placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-primary 
+    focus:border-primary focus:z-10 sm:text-sm;
   }
 }
-  
