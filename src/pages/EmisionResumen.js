@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
+import ReactToPrint from 'react-to-print'
 import useAxiosPrivate from '../hooks/useAxiosPrivate'
 import TopBar from '../components/TopBar'
 import TableResumenEmision from '../components/TableResumenEmision'
 
 const EmisionResumen = () => {
+  const tableRef = useRef() // Reference to the report's table
   const axiosPrivate = useAxiosPrivate() // Uses axios with auth credentials
 
   const [info, setInfo] = useState({}) // Information retrieved from the API
@@ -55,12 +57,18 @@ const EmisionResumen = () => {
       {/* TopBar */}
       <TopBar btns={topBarBtns} />
 
+      {/* Print PDF button (needs ref) */}
+      <ReactToPrint
+        trigger={() => <button className='print-btn'>Imprimir PDF</button>}
+        content={() => tableRef.current}
+      />
+
       {/* Main content (report) */}
       <div className='content'>
         {loading ? (
           <h1 className='text-center'>Cargando...</h1> // Displays message if information is not yet available
         ) : (
-          <TableResumenEmision info={info} />
+          <TableResumenEmision info={info} ref={tableRef} />
         )}
       </div>
     </div>

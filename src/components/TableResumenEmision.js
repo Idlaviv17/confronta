@@ -1,9 +1,9 @@
 import React from 'react'
 
 // The component needs React.forwardRef() in order for the pdf converter to work
-const TableResumenEmision = ({ info }) => {
+const TableResumenEmision = React.forwardRef(({ info }, ref) => {
   return (
-    <div>
+    <div ref={ref}>
       <div className='overflow-x-auto mt-4'>
           <table className='table table-compact w-full'>
             <caption className='text-xl m-2 font-medium'>RESUMEN DE LA EMISIÓN IMSS - INFONAVIT</caption>
@@ -197,6 +197,6 @@ const TableResumenEmision = ({ info }) => {
         </div>
     </div>
   )
-}
+})
 
 export default TableResumenEmision
