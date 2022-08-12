@@ -74,7 +74,7 @@ const SuaPagoBimestral = () => {
         <input
           type='text'
           placeholder='Filtrar...'
-          class='input input-bordered w-full max-w-xs'
+          className='input input-bordered w-full max-w-xs'
           onChange={handleFilterChange}
         />
       </div>
