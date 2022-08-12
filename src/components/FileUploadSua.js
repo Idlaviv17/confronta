@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+import useAxiosPrivate from '../hooks/useAxiosPrivate'
 import { AccessParser } from 'accessdb-parser'
 import arrayBufferToBuffer from 'arraybuffer-to-buffer'
 import { HiOutlineUpload } from 'react-icons/hi'
 import { FcCheckmark } from 'react-icons/fc'
 
 const FileUploadSua = () => {
+  const axiosPrivate = useAxiosPrivate() // Uses axios with auth credentials
+
   const [txt, setTxt] = useState('') // Sua txt file info
   const [mdb, setMdb] = useState('') // Sua mdb file info
 
@@ -33,11 +35,12 @@ const FileUploadSua = () => {
     // Sends data to the server (asynchronously)
     const send = async (txtData, mdbData) => {
       try {
-        await axios.post('/api/sua', { txtData, mdbData })
+        await axiosPrivate.post('/api/sua', { txtData, mdbData })
         alert('El archivo se ha enviado')
         setTxt('')
       } catch (err) {
         alert('Existe un problema al enviar el archivo')
+        console.error(err)
       }
     }
 

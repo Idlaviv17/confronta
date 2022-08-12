@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+import useAxiosPrivate from '../hooks/useAxiosPrivate'
 import JSZip from 'jszip'
 import * as XLSX from 'xlsx/xlsx.mjs'
 import FileUploadEmiBimestral from './FileUploadEmiBimestral'
@@ -7,6 +7,8 @@ import { HiOutlineUpload } from 'react-icons/hi'
 import { FcCheckmark } from 'react-icons/fc'
 
 const FileUploadEmiMensual = () => {
+  const axiosPrivate = useAxiosPrivate() // Uses axios with auth credentials
+
   const [file, setFile] = useState('') // Monthly data file
   const [bimestral, setBimestral] = useState(false) // Conditional to display a second upload option (bimonthly)
 
@@ -56,11 +58,12 @@ const FileUploadEmiMensual = () => {
 
       // Sends the data to the server
       try {
-        await axios.post('/api/emi/mensual', { data: data })
+        await axiosPrivate.post('/api/emi/mensual', { data: data })
         alert('El archivo se ha enviado')
         setFile('')
       } catch (err) {
         alert('Existe un problema al enviar el archivo')
+        console.error(err)
       }
     }
 
@@ -96,21 +99,23 @@ const FileUploadEmiMensual = () => {
           // Sends data to the bimonthly API route
           if (Object.keys(worksheets).length === 3) {
             try {
-              await axios.post('/api/emi/bimestral', worksheets)
+              await axiosPrivate.post('/api/emi/bimestral', worksheets)
               alert('El archivo se ha enviado')
               setFile('')
             } catch (err) {
               alert('Existe un problema al enviar el archivo')
+              console.error(err)
             }
           }
 
           // Sends data to the monthly API route
           try {
-            await axios.post('/api/emi/mensual', worksheets)
+            await axiosPrivate.post('/api/emi/mensual', worksheets)
             alert('El archivo se ha enviado')
             setFile('')
           } catch (err) {
             alert('Existe un problema al enviar el archivo')
+            console.error(err)
           }
         }
       }

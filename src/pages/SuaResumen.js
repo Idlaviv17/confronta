@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react'
 import ReactToPrint from 'react-to-print'
-import axios from '../api/axios'
+import useAxiosPrivate from '../hooks/useAxiosPrivate'
 import TopBar from '../components/TopBar'
 import TableResumenSua from '../components/TableResumenSua'
 
 const SuaResumen = () => {
   const tableRef = useRef() // Reference to the report's table
+  const axiosPrivate = useAxiosPrivate() // Uses axios with auth credentials
 
   const [info, setInfo] = useState({}) // Information retrieved from the API
   const [loading, setLoading] = useState(true) // Conditional to display a message while loading
@@ -17,13 +18,14 @@ const SuaResumen = () => {
       const MES = '04'
       const REGPATRON = 'E6030587100'
       try {
-        const res = await axios.get('/api/sua/resumen', {
+        const res = await axiosPrivate.get('/api/sua/resumen', {
           params: { ANO, MES, REGPATRON },
         })
         setInfo(res.data)
         setLoading(false)
       } catch (err) {
         alert('Existe un problema al leer el resumen')
+        console.error(err)
       }
     }
 

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import axios from '../api/axios'
+import useAxiosPrivate from '../hooks/useAxiosPrivate'
 import TopBar from '../components/TopBar'
 import TableResumenEmision from '../components/TableResumenEmision'
 
 const EmisionResumen = () => {
+  const axiosPrivate = useAxiosPrivate() // Uses axios with auth credentials
+
   const [info, setInfo] = useState({}) // Information retrieved from the API
   const [loading, setLoading] = useState(true) // Conditional to display a message while loading
 
@@ -14,13 +16,14 @@ const EmisionResumen = () => {
       const MES = '04'
       const REGPATRON = 'E6030587100'
       try {
-        const res = await axios.get('/api/emi/resumen', {
+        const res = await axiosPrivate.get('/api/emi/resumen', {
           params: { ANO, MES, REGPATRON },
         })
         setInfo(res.data)
         setLoading(false)
       } catch (err) {
         alert('Existe un problema al leer el resumen de la emisión')
+        console.error(err)
       }
     }
 

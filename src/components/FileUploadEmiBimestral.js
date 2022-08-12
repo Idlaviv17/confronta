@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+import useAxiosPrivate from '../hooks/useAxiosPrivate'
 import JSZip from 'jszip'
 import { HiOutlineUpload } from 'react-icons/hi'
 import { FcCheckmark } from 'react-icons/fc'
 
 const FileUploadEmiBimestral = () => {
+  const axiosPrivate = useAxiosPrivate() // Uses axios with auth credentials
+
   const [file, setFile] = useState('') // Bimonthly data file
 
   const onChange = e => { // On change file handler
@@ -17,11 +19,12 @@ const FileUploadEmiBimestral = () => {
     // Sends data to the server
     const send = async data => {
       try {
-        await axios.post('/api/emi/bimestral', { data: data })
+        await axiosPrivate.post('/api/emi/bimestral', { data: data })
         alert('El archivo se ha enviado')
         setFile('')
       } catch (err) {
         alert('Existe un problema al enviar el archivo')
+        console.error(err)
       }
     }
 
