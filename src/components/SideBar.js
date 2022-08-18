@@ -11,7 +11,7 @@ const SideBar = () => {
 
   const signOut = async () => { // Logout handler
     await logout()
-    navigate('/')
+    navigate('/login')
   }
 
   return (

@@ -4,7 +4,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import axios from '../api/axios'
 
 const Login = () => {
-  const { setAuth } = useAuth()
+  const { setAuth, persist, setPersist } = useAuth()
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -56,6 +56,14 @@ const Login = () => {
     }
   }
 
+  const togglePersist = () => {
+    setPersist(prev => !prev)
+  }
+
+  useEffect(() => {
+    localStorage.setItem('persist', persist)
+  }, [persist])
+
   return (
     <div className='min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
       <div className='max-w-md w-full space-y-8'>
@@ -69,7 +77,10 @@ const Login = () => {
         <h1 className='mt-6 text-center text-4xl font-extrabold text-gray-800'>
           Iniciar Sesión
         </h1>
-        <form onSubmit={handleSubmit} className='mt-8 space-y-6 flex items-center justify-center align-middle flex-col'>
+        <form
+          onSubmit={handleSubmit}
+          className='mt-8 space-y-6 flex items-center justify-center align-middle flex-col'
+        >
           <div className='rounded-md shadow-sm -space-y-px justify-self-center w-full'>
             <label htmlFor='username'>Usuario:</label>
             <input
@@ -96,6 +107,16 @@ const Login = () => {
           <button className='btn btn-primary text-white justify-self-center w-full'>
             Iniciar Sesión
           </button>
+          <div className='flex items-center flex-row w-full'>
+            <input
+              type='checkbox'
+              id='persist'
+              onChange={togglePersist}
+              checked={persist}
+              className='checkbox checkbox-primary object-left'
+            />
+            <label className='label cursor-pointer text-sm font-normal'>Recuérdame</label>
+          </div>
         </form>
         <p>
           ¿Necesita una cuenta?
