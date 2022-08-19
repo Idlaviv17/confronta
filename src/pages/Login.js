@@ -122,7 +122,7 @@ const Login = () => {
           ¿Necesita una cuenta?
           <br />
           <span className='font-medium text-primary hover:text-blue-400'>
-            <Link to='#'>Registrarse</Link>
+            <Link to='/register'>Registrarse</Link>
           </span>
         </p>
       </div>

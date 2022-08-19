@@ -48,6 +48,20 @@
     left: -9999px;
   }
 
+  .hide {
+    display: none;
+  }
+
+  .valid {
+    color: limegreen;
+    margin-left: 0.25rem;
+  }
+
+  .invalid {
+    color: red;
+    margin-left: 0.25rem;
+  }
+
   .login-input {
     @apply appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 
     placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-primary 

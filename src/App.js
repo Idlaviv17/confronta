@@ -3,6 +3,7 @@ import Layout from './components/Layout'
 import { Route, Routes } from 'react-router-dom'
 import RequireAuth from './components/RequireAuth'
 import Login from './pages/Login'
+import Register from './pages/Register'
 import PersistLogin from './components/PersistLogin'
 import HomePage from './pages/HomePage'
 import RegPatPage from './pages/RegPatPage'
@@ -21,6 +22,7 @@ const App = () => {
     <Routes>
       {/* Login */}
       <Route path='/login' element={<Login />} />
+      <Route path='/register' element={<Register />} />
 
       {/* Routes to protect */}
       <Route element={<PersistLogin />}>
