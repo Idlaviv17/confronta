@@ -1,133 +1,136 @@
-import { useRef, useState, useEffect } from 'react'
-import useAuth from '../hooks/useAuth'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
-import axios from '../api/axios'
+import { useRef, useState, useEffect } from "react";
+import useAuth from "../hooks/useAuth";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import axios from "../api/axios";
 
 const Login = () => {
-  const { setAuth, persist, setPersist } = useAuth()
+  const { setAuth, persist, setPersist } = useAuth();
 
-  const navigate = useNavigate()
-  const location = useLocation()
-  const from = location.state?.from?.pathname || '/'
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
-  const userRef = useRef()
-  const errRef = useRef()
+  const userRef = useRef();
+  const errRef = useRef();
 
-  const [user, setUser] = useState('')
-  const [password, setPwd] = useState('')
-  const [errMsg, setErrMsg] = useState('')
+  const [user, setUser] = useState("");
+  const [password, setPwd] = useState("");
 
-  useEffect(() => {
-    userRef.current.focus()
-  }, [])
+  const [errMsg, setErrMsg] = useState("");
 
   useEffect(() => {
-    setErrMsg('')
-  }, [user, password])
+    userRef.current.focus();
+  }, []);
 
-  const handleSubmit = async e => {
-    e.preventDefault()
+  useEffect(() => {
+    setErrMsg("");
+  }, [user, password]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     try {
       const response = await axios.post(
-        '/auth',
-        JSON.stringify({ user, password }),
+        "/auth",
+        JSON.stringify({ user, password, persist }),
         {
-          headers: { 'Content-Type': 'application/json' },
+          headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
-      )
-      const accessToken = response?.data?.accessToken
-      setAuth({ user, password, accessToken })
-      setUser('')
-      setPwd('')
-      navigate(from, { replace: true })
+      );
+      const accessToken = response?.data?.accessToken;
+      setAuth({ user, password, accessToken });
+      setUser("");
+      setPwd("");
+      navigate(from, { replace: true });
     } catch (err) {
       if (!err?.response) {
-        setErrMsg('No Server Response')
+        setErrMsg("No Server Response");
       } else if (err.response?.status === 400) {
-        setErrMsg('Missing Username or Password')
+        setErrMsg("Missing Username or Password");
       } else if (err.response?.status === 401) {
-        setErrMsg('Unauthorized')
+        setErrMsg("Unauthorized");
       } else {
-        setErrMsg('Login Failed')
+        setErrMsg("Login Failed");
       }
-      errRef.current.focus()
+      errRef.current.focus();
     }
-  }
+  };
 
   const togglePersist = () => {
-    setPersist(prev => !prev)
-  }
+    setPersist((prev) => !prev);
+  };
 
   useEffect(() => {
-    localStorage.setItem('persist', persist)
-  }, [persist])
+    localStorage.setItem("persist", persist);
+  }, [persist]);
 
   return (
-    <div className='min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
-      <div className='max-w-md w-full space-y-8'>
+    <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8">
         <p
           ref={errRef}
-          className={errMsg ? 'alert alert-error shadow-lg' : 'offscreen'}
-          aria-live='assertive'
+          className={errMsg ? "alert alert-error shadow-lg" : "offscreen"}
+          aria-live="assertive"
         >
           {errMsg}
         </p>
-        <h1 className='mt-6 text-center text-4xl font-extrabold text-gray-800'>
+        <h1 className="mt-6 text-center text-4xl font-extrabold text-gray-800">
           Iniciar Sesión
         </h1>
         <form
           onSubmit={handleSubmit}
-          className='mt-8 space-y-6 flex items-center justify-center align-middle flex-col'
+          className="mt-8 space-y-6 flex items-center justify-center align-middle flex-col"
         >
-          <div className='rounded-md shadow-sm -space-y-px justify-self-center w-full'>
-            <label htmlFor='username'>Usuario:</label>
+          <div className="rounded-md shadow-sm -space-y-px justify-self-center w-full">
+            <label htmlFor="username">Usuario:</label>
             <input
-              type='text'
-              id='username'
+              type="text"
+              id="username"
               ref={userRef}
-              autoComplete='off'
-              onChange={e => setUser(e.target.value)}
+              autoComplete="off"
+              onChange={(e) => setUser(e.target.value)}
               value={user}
               required
-              className='login-input'
+              className="login-input"
             />
 
-            <label htmlFor='password'>Contraseña:</label>
+            <label htmlFor="password">Contraseña:</label>
             <input
-              type='password'
-              id='password'
-              onChange={e => setPwd(e.target.value)}
+              type="password"
+              id="password"
+              onChange={(e) => setPwd(e.target.value)}
               value={password}
               required
-              className='login-input'
+              className="login-input"
             />
           </div>
-          <button className='btn btn-primary text-white justify-self-center w-full'>
+          <button className="btn btn-primary text-white justify-self-center w-full">
             Iniciar Sesión
           </button>
-          <div className='flex items-center flex-row w-full'>
+          <div className="flex items-center flex-row w-full">
             <input
-              type='checkbox'
-              id='persist'
+              type="checkbox"
+              id="persist"
               onChange={togglePersist}
               checked={persist}
-              className='checkbox checkbox-primary object-left'
+              className="checkbox checkbox-primary object-left"
             />
-            <label className='label cursor-pointer text-sm font-normal'>Recuérdame</label>
+            <label className="label cursor-pointer text-sm font-normal">
+              Recuérdame
+            </label>
           </div>
         </form>
         <p>
           ¿Necesita una cuenta?
           <br />
-          <span className='font-medium text-primary hover:text-blue-400'>
-            <Link to='/register'>Registrarse</Link>
+          <span className="font-medium text-primary hover:text-blue-400">
+            <Link to="/register">Registrarse</Link>
           </span>
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
