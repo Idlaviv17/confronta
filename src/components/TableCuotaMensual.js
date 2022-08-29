@@ -6,14 +6,14 @@ const TableCuotaMensual = ({ cuota }) => {
       <thead>
         <tr className='hover'>
           <td className='stop-stretching'>{cuota.NUMAFIL}</td>
-          <td>{cuota.NOMBRE}</td>
+          <td className='p-0'>{cuota.NOMBRE}</td>
           <td></td>
           <td></td>
           <td></td>
           <td></td>
           <td></td>
           <td></td>
-          <td>{cuota.CURP}</td>
+          <td className='p-0'>{cuota.CURP}</td>
           <td></td>
           <td></td>
           <td></td>
@@ -21,18 +21,18 @@ const TableCuotaMensual = ({ cuota }) => {
       </thead>
       <tbody>
         <tr className='hover'>
-          <td>${cuota.ULTIMOSDI}</td>
-          <td>{cuota.COTIZADOS}</td>
-          <td>{cuota.INCAPACIDADES}</td>
-          <td>{cuota.AUSENTISMOS}</td>
-          <td>${cuota.C_EYM}</td>
-          <td>${cuota.C_EXCEDE}</td>
-          <td>${cuota.C_PD}</td>
-          <td>${cuota.C_GMP}</td>
-          <td>${cuota.C_RT}</td>
-          <td>${cuota.C_IYV}</td>
-          <td>${cuota.C_GPS}</td>
-          <td>${cuota.SUMA}</td>
+          <td className='p-0'>${cuota.ULTIMOSDI}</td>
+          <td className='p-0'>{cuota.COTIZADOS}</td>
+          <td className='p-0'>{cuota.INCAPACIDADES}</td>
+          <td className='p-0'>{cuota.AUSENTISMOS}</td>
+          <td className='p-0'>${cuota.C_EYM}</td>
+          <td className='p-0'>${cuota.C_EXCEDE}</td>
+          <td className='p-0'>${cuota.C_PD}</td>
+          <td className='p-0'>${cuota.C_GMP}</td>
+          <td className='p-0'>${cuota.C_RT}</td>
+          <td className='p-0'>${cuota.C_IYV}</td>
+          <td className='p-0'>${cuota.C_GPS}</td>
+          <td className='p-0'>${cuota.SUMA}</td>
         </tr>
         {cuota.MOVS.map((mov, idx) => (
           <TableMovimientoCuotaMensual

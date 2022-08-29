@@ -65,30 +65,31 @@ const SuaPagoMensual = () => {
 
       {/* Print PDF button (needs ref) */}
       <ReactToPrint
-        trigger={() => <button className='print-btn'>Imprimir PDF</button>}
+        trigger={() => <button className="print-btn">Imprimir PDF</button>}
+        pageStyle="@page { size: auto; margin: 5mm;  } @media print { body { -webkit-print-color-adjust: exact; padding: 20px !important; } }"
         content={() => tableRef.current}
       />
 
       {/* Filter Text Field */}
-      <div className='filter'>
+      <div className="filter">
         <input
-          type='text'
-          placeholder='Filtrar...'
-          className='input input-bordered w-full max-w-xs'
+          type="text"
+          placeholder="Filtrar..."
+          className="input input-bordered w-full max-w-xs"
           onChange={handleFilterChange}
         />
       </div>
 
       {/* Main content (report) */}
-      <div className='content'>
+      <div className="content">
         {loading ? (
-          <h1 className='text-center'>Cargando...</h1> // Displays message if information is not yet available
+          <h1 className="text-center">Cargando...</h1> // Displays message if information is not yet available
         ) : (
           <TablePagoMensualSua info={info} filter={filter} ref={tableRef} />
         )}
       </div>
     </div>
-  )
+  );
 }
 
 export default SuaPagoMensual
