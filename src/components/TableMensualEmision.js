@@ -10,45 +10,45 @@ const TableMensualEmision = React.forwardRef(({ info, filter }, ref) => {
     <div ref={ref}>
       <div className='overflow-x-auto mt-4'>
         <table className='table table-compact w-full'>
-          <caption className='text-xl m-2 font-medium'>CONSULTA DE LIQUIDACIONES EMITIDAS IMSS</caption>
+          <caption className='text-xl m-2 font-medium'>LIQUIDACIONES EMITIDA IMSS</caption>
           <tbody>
               <tr>
-                <td>
+                <td className='p-0'>
                   <span className='font-medium hover:font-bold'>Fecha de impresión:</span> {header.FECHA} 
                 </td>
-                <td>
+                <td className='p-0'>
                   <span className='font-medium hover:font-bold'> Mes y año del proceso :</span> {`${header.MES} / ${header.ANO}`}
                 </td>
               </tr>
               <tr>
-                <td>
+                <td className='p-0'>
                   <span className='font-medium hover:font-bold'>Registro Patronal :</span> {header.REGPATRON} 
                 </td>
-                <td>
+                <td className='p-0'>
                   <span className='font-medium hover:font-bold'> Delegación :</span> {header.EMIP_DEL}
                 </td>
               </tr>
               <tr>
-                <td>
+                <td className='p-0'>
                   <span className='font-medium hover:font-bold'>Nombre o Razón Social :</span> {header.EMIP_NOM_PATRON} 
                 </td>
-                <td>
+                <td className='p-0'>
                   <span className='font-medium hover:font-bold'>SubDelegación :</span> {header.EMIP_SUB}
                 </td>
               </tr>
               <tr>
-                <td>
+                <td className='p-0'>
                   <span className='font-medium hover:font-bold'>Domicilio:</span> {header.EMIP_DOM}
                 </td>
-                <td>
+                <td className='p-0'>
                   <span className='font-medium hover:font-bold'>Trabajadores cotizantes :</span> {header.EMIP_NUM_TRAB_COT}
                 </td>
               </tr>
               <tr>
-                <td>
+                <td className='p-0'>
                   <span className='font-medium hover:font-bold'>Actividad :</span> {header.EMIP_ACT}
                 </td>
-                <td>
+                <td className='p-0'>
                   <span className='font-medium hover:font-bold'>Prima RT :</span> {header.EMIP_PRIMA_RT}
                 </td>
               </tr>

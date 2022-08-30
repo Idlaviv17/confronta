@@ -1,0 +1,7 @@
+npm run start #ejecutar cliente
+
+npm run dev #ejecutar api
+
+npx prisma db pull #crear schema a partir de db
+ 
+npx prisma generate #actualizar el modelo 

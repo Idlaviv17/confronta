@@ -1,62 +1,62 @@
-import React, { useEffect, useState, useRef } from 'react'
-import ReactToPrint from 'react-to-print'
-import useAxiosPrivate from '../hooks/useAxiosPrivate'
-import TopBar from '../components/TopBar'
-import TablePagoMensualSua from '../components/TablePagoMensualSua'
+import React, { useEffect, useState, useRef } from "react";
+import ReactToPrint from "react-to-print";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import TopBar from "../components/TopBar";
+import TablePagoMensualSua from "../components/TablePagoMensualSua";
 
 const SuaPagoMensual = () => {
-  const tableRef = useRef() // Reference to the report's table
-  const axiosPrivate = useAxiosPrivate() // Uses axios with auth credentials
+  const tableRef = useRef(); // Reference to the report's table
+  const axiosPrivate = useAxiosPrivate(); // Uses axios with auth credentials
 
-  const [info, setInfo] = useState({}) // Information retrieved from the API
-  const [loading, setLoading] = useState(true) // Conditional to display a message while loading
-  const [filter, setFilter] = useState('') // Value in which to filter the report's data
+  const [info, setInfo] = useState({}); // Information retrieved from the API
+  const [loading, setLoading] = useState(true); // Conditional to display a message while loading
+  const [filter, setFilter] = useState(""); // Value in which to filter the report's data
 
   useEffect(() => {
     // Fetches specific data from the API and updates state
     const fetchData = async () => {
-      const ANO = 2022
-      const MES = '04'
-      const REGPATRON = 'E6030587100'
+      const ANO = 2022;
+      const MES = "04";
+      const REGPATRON = "E6030587100";
       try {
-        const res = await axiosPrivate.get('/api/sua/mensual', {
+        const res = await axiosPrivate.get("/api/sua/mensual", {
           params: { ANO, MES, REGPATRON },
-        })
-        setInfo(res.data)
-        setLoading(false)
+        });
+        setInfo(res.data);
+        setLoading(false);
       } catch (err) {
-        alert('Existe un problema al leer el pago mensual')
-        console.error(err)
+        alert("Existe un problema al leer el pago mensual");
+        console.error(err);
       }
-    }
+    };
 
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   // Button information to pass to the TopBar component
   const topBarBtns = [
     {
-      name: 'Leer Disco',
-      to: '/sua',
+      name: "Leer Disco",
+      to: "/sua",
     },
     {
-      name: 'Resumen',
-      to: '/sua/resumen',
+      name: "Resumen",
+      to: "/sua/resumen",
     },
     {
-      name: 'Pago Mensual',
-      to: '/sua/mensual',
+      name: "Pago Mensual",
+      to: "/sua/mensual",
     },
     {
-      name: 'Pago Bimestral',
-      to: '/sua/bimestral',
+      name: "Pago Bimestral",
+      to: "/sua/bimestral",
     },
-  ]
+  ];
 
   // Changes in the filter value handler
-  const handleFilterChange = e => {
-    setFilter(e.target.value)
-  }
+  const handleFilterChange = (e) => {
+    setFilter(e.target.value);
+  };
 
   return (
     <div>
@@ -90,6 +90,6 @@ const SuaPagoMensual = () => {
       </div>
     </div>
   );
-}
+};
 
-export default SuaPagoMensual
+export default SuaPagoMensual;

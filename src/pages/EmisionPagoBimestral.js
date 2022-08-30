@@ -66,6 +66,7 @@ const EmisionPagoBimestral = () => {
       {/* Print PDF button (needs ref) */}
       <ReactToPrint
         trigger={() => <button className='print-btn'>Imprimir PDF</button>}
+        pageStyle="@page { size: auto; margin: 10mm;  } @media print { body { -webkit-print-color-adjust: exact; padding: 20px !important; } }"
         content={() => tableRef.current}
       />
 

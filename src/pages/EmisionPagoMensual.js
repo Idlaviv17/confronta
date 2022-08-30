@@ -1,62 +1,62 @@
-import React, { useState, useEffect, useRef } from 'react'
-import ReactToPrint from 'react-to-print'
-import useAxiosPrivate from '../hooks/useAxiosPrivate'
-import TopBar from '../components/TopBar'
-import TableMensualEmision from '../components/TableMensualEmision'
+import React, { useState, useEffect, useRef } from "react";
+import ReactToPrint from "react-to-print";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import TopBar from "../components/TopBar";
+import TableMensualEmision from "../components/TableMensualEmision";
 
 const EmisionPagoMensual = () => {
-  const tableRef = useRef() // Reference to the report's table
-  const axiosPrivate = useAxiosPrivate() // Uses axios with auth credentials
+  const tableRef = useRef(); // Reference to the report's table
+  const axiosPrivate = useAxiosPrivate(); // Uses axios with auth credentials
 
-  const [info, setInfo] = useState({}) // Information retrieved from the API
-  const [loading, setLoading] = useState(true) // Conditional to display a message while loading
-  const [filter, setFilter] = useState('') // Value in which to filter the report's data
+  const [info, setInfo] = useState({}); // Information retrieved from the API
+  const [loading, setLoading] = useState(true); // Conditional to display a message while loading
+  const [filter, setFilter] = useState(""); // Value in which to filter the report's data
 
   useEffect(() => {
     // Fetches specific data from the API and updates state
     const fetchData = async () => {
-      const ANO = 2022
-      const MES = '04'
-      const REGPATRON = 'E6030587100'
+      const ANO = 2022;
+      const MES = "04";
+      const REGPATRON = "E6030587100";
       try {
-        const res = await axiosPrivate.get('/api/emi/mensual/pago', {
+        const res = await axiosPrivate.get("/api/emi/mensual/pago", {
           params: { ANO, MES, REGPATRON },
-        })
-        setInfo(res.data)
-        setLoading(false)
+        });
+        setInfo(res.data);
+        setLoading(false);
       } catch (err) {
-        alert('Existe un problema al leer el reporte mensual')
-        console.error(err)
+        alert("Existe un problema al leer el reporte mensual");
+        console.error(err);
       }
-    }
+    };
 
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   // Button information to pass to the TopBar component
   const topBarBtns = [
     {
-      name: 'Leer Emisión',
-      to: '/emision',
+      name: "Leer Emisión",
+      to: "/emision",
     },
     {
-      name: 'Resumen',
-      to: '/emision/resumen',
+      name: "Resumen",
+      to: "/emision/resumen",
     },
     {
-      name: 'Emisión Mensual',
-      to: '/emision/mensual',
+      name: "Emisión Mensual",
+      to: "/emision/mensual",
     },
     {
-      name: 'Emisión Bimestral',
-      to: '/emision/bimestral',
+      name: "Emisión Bimestral",
+      to: "/emision/bimestral",
     },
-  ]
+  ];
 
   // Changes in the filter value handler
-  const handleFilterChange = e => {
-    setFilter(e.target.value)
-  }
+  const handleFilterChange = (e) => {
+    setFilter(e.target.value);
+  };
 
   return (
     <div>
@@ -65,30 +65,31 @@ const EmisionPagoMensual = () => {
 
       {/* Print PDF button (needs ref) */}
       <ReactToPrint
-        trigger={() => <button className='print-btn'>Imprimir PDF</button>}
+        trigger={() => <button className="print-btn">Imprimir PDF</button>}
+        pageStyle="@page { size: auto; margin: 10mm;  } @media print { body { -webkit-print-color-adjust: exact; padding: 20px !important; } }"
         content={() => tableRef.current}
       />
 
       {/* Filter Text Field */}
-      <div className='filter'>
+      <div className="filter">
         <input
-          type='text'
-          placeholder='Filtrar...'
-          className='input input-bordered w-full max-w-xs'
+          type="text"
+          placeholder="Filtrar..."
+          className="input input-bordered w-full max-w-xs"
           onChange={handleFilterChange}
         />
       </div>
 
       {/* Main content (report) */}
-      <div className='content'>
+      <div className="content">
         {loading ? (
-          <h1 className='text-center'>Cargando...</h1> // Displays message if information is not yet available
+          <h1 className="text-center">Cargando...</h1> // Displays message if information is not yet available
         ) : (
           <TableMensualEmision info={info} filter={filter} ref={tableRef} />
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default EmisionPagoMensual
+export default EmisionPagoMensual;
